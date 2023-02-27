@@ -6,7 +6,7 @@
 #    By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 12:01:00 by gt-serst          #+#    #+#              #
-#    Updated: 2023/02/24 18:26:23 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/02/27 17:19:59 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,13 @@ CFLAGS				= -Wall -Wextra -Werror
 
 RM					= rm -rf
 
-SRCS				= main.c ft_parsing.c ft_lst_utils.c ft_check_av.c
+SRCS				= main.c \
+					  ft_parsing.c \
+					  ft_lst_utils.c \
+					  ft_check_av.c \
+					  ft_check_av_utils.c \
+					  ft_operations.c \
+					  ft_operations_utils.c
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 

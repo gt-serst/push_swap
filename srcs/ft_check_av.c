@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:08:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/24 18:56:30 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/02/27 16:57:40 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,67 @@ void	ft_free_malloc(char **tab)
 	free(tab);
 }
 
-int	ft_check_digit(int ac, char **av)
+int	ft_check_double(int ac, char **av)
 {
 	int	i;
-	int temp;
+	int	j;
 
 	if (ac == 2)
 		i = 0;
-	else 
+	else
 		i = 1;
 	while (av[i])
 	{
-		temp = ft_atoi(av[i]);
-		if (!ft_isdigit(temp + '0'))
+		j = i + 1;
+		while (av[j])
 		{
-			printf("%d\n", temp);
+			if (ft_atoi(av[i]) == ft_atoi(av[j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	ft_check_intoverflow(int ac, char **av)
+{
+	int			i;
+	long long	current_digit;
+
+	if (ac == 2)
+		i = 0;
+	else
+		i = 1;
+	while (av[i])
+	{
+		current_digit = ft_atol(av[i]);
+		if (current_digit > INT_MAX || current_digit < INT_MIN)
 			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_check_digit(int ac, char **av)
+{
+	int	i;
+	int	j;
+
+	if (ac == 2)
+		i = 0;
+	else
+		i = 1;
+	while (av[i])
+	{
+		j = 0;
+		if (av[i][j] == '-')
+			j++;
+		while (av[i][j])
+		{
+			if (!ft_isdigit(av[i][j]))
+				return (0);
+			j++;
 		}
 		i++;
 	}
@@ -56,7 +101,8 @@ int	ft_check_av(int ac, char **av)
 	if (ac == 2)
 	{
 		args = ft_split(av[1], ' ');
-		if (!ft_check_digit(ac, args))
+		if (!ft_check_digit(ac, args) || !ft_check_intoverflow(ac, args)
+			|| !ft_check_double(ac, args))
 		{
 			ft_free_malloc(args);
 			return (0);
@@ -64,10 +110,9 @@ int	ft_check_av(int ac, char **av)
 	}
 	else
 	{
-		if (!ft_check_digit(ac, av))
+		if (!ft_check_digit(ac, av) || !ft_check_intoverflow(ac, av)
+			|| !ft_check_double(ac, av))
 			return (0);
 	}
 	return (1);
 }
-
-

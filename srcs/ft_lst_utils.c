@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:18:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/24 18:04:33 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/02/27 20:49:22 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,37 @@ void	ft_ndadd_back(t_data **stack, t_data *elem)
 	}
 	else
 		*stack = elem;
+}
+
+/*
+static void	ft_nddelone(t_data *lst, void (*del)(void *))
+{
+	if (!lst || !del)
+		return ;
+	del((char *)lst->data);
+	free(lst);
+	lst = NULL;
+}
+
+static void	ft_del(void	*content)
+{
+	free(content);
+}
+*/
+
+void	ft_ndclear(t_data **stack)
+{
+	t_data	*head;
+	t_data	*temp;
+
+	if (!stack)
+		return ;
+	head = *stack;
+	while (head != NULL)
+	{
+		temp = head;
+		head = head->next;
+		free(temp);
+	}
+	*stack = NULL;
 }
