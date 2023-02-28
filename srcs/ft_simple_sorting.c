@@ -36,9 +36,12 @@ t_data	**ft_sort_5(t_data **stack_a, t_data **stack_b)
 	max = ft_get_max(stack_a);
 	min = ft_get_min(stack_a);
 	stack_a = swap_to_front(stack_a, max);
-	ft_print_list(*stack_a);
 	pb(stack_a, stack_b);
 	stack_a = swap_to_front(stack_a, min);
 	pb(stack_a, stack_b);
+	ft_sort_3(stack_a);
+	pa(stack_b, stack_a);
+	pa(stack_b, stack_a);
+	ra(stack_a);
 	return (stack_a);
 }
