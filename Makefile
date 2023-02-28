@@ -24,7 +24,12 @@ SRCS				= main.c \
 					  ft_check_av.c \
 					  ft_check_av_utils.c \
 					  ft_operations.c \
-					  ft_operations_utils.c
+					  ft_operations_utils.c \
+					  ft_operations_add.c \
+					  ft_sorting.c \
+					  ft_sorting_utils.c \
+					  ft_simple_sorting.c \
+					  ft_simple_sorting_utils.c
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 

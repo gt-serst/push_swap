@@ -32,12 +32,12 @@ void	ss(t_data **stack_a, t_data **stack_b)
 
 void	pa(t_data **stack_b, t_data **stack_a)
 {
-	push(stack_a, stack_b);
+	push(stack_b, stack_a);
 	ft_putstr_fd("pa\n", 1);
 }
 
 void	pb(t_data **stack_a, t_data **stack_b)
 {
-	push(stack_b, stack_a);
+	push(stack_a, stack_b);
 	ft_putstr_fd("pb\n", 1);
 }
