@@ -14,19 +14,19 @@
 
 t_data	**ft_create_struct(t_data **stack, char **args)
 {
-	int		i;
+	int	index;
 	t_data	*new_node;
 
 	if (!args)
 		return (0);
-	i = 0;
-	while (args && args[i])
+	index = 0;
+	while (args && args[index])
 	{
-		new_node = ft_ndnew(ft_atoi(args[i]));
+		new_node = ft_ndnew(ft_atoi(args[index]), index);
 		if (!new_node)
 			return (0);
 		ft_ndadd_back(stack, new_node);
-		i++;
+		index++;
 	}
 	return (stack);
 }

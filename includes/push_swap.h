@@ -24,6 +24,7 @@ typedef struct s_data
 	int		data;
 	int		index;
 	struct s_data	*next;
+	struct s_data	*prev;
 }				t_data;
 
 int		ft_check_av(int ac, char **av);
@@ -34,7 +35,7 @@ long long	ft_atol(const char *str);
 void		ft_free_malloc(char	**tab);
 t_data		**ft_get_args(t_data **stack_a, int ac, char **av);
 t_data		**ft_create_struct(t_data **stack_a, char **args);
-t_data		*ft_ndnew(int data);
+t_data		*ft_ndnew(int data, int index);
 void		ft_ndadd_back(t_data **stack_a, t_data *elem);
 t_data		*ft_ndlast(t_data *head);
 void		ft_ndclear(t_data **stack);
@@ -53,12 +54,20 @@ void		swap(t_data **stack);
 void		push(t_data **stack_src, t_data **stack_dst);
 void		move_to_end(t_data **stack);
 void		move_to_front(t_data **stack);
+t_data		**ft_sorting(t_data **stack_a, t_data **stack_b);
+int		ft_stack_size(t_data **stack);
+t_data		**ft_sort_2(t_data **stack_a);
 t_data		**ft_sort_3(t_data **stack_a);
 t_data		**ft_sort_5(t_data **stack_a, t_data **stack_b);
+t_data		**ft_sort_100(t_data **stack_a, t_data **stack_b);
 int		ft_get_max(t_data **stack);
 int		ft_get_min(t_data **stack);
-t_data		**swap_to_front(t_data **stack, int maxmin);
+t_data		**ft_simple_swap_to_front(t_data **stack, int maxmin);
 int		ft_get_index(t_data **stack, int maxmin);
+int		ft_get_chunk_from_top(t_data **stack, t_data *head);
+int		ft_get_chunk_from_bottom(t_data **stack, t_data *tail);
+t_data		*ft_dispatch_chunk(t_data *hold_first, t_data *hold_second);
+t_data		**ft_swap_to_front(t_data **stack, t_data *elem);
 
 void		ft_print_list(t_data *head);
 

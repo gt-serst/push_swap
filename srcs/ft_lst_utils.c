@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-t_data	*ft_ndnew(int data)
+t_data	*ft_ndnew(int data, int index)
 {
 	t_data	*elem;
 
@@ -20,7 +20,10 @@ t_data	*ft_ndnew(int data)
 	if (!elem)
 		return (NULL);
 	elem->data = data;
+	elem->index = index;
+	printf("Index:%d\n", elem->index);
 	elem->next = NULL;
+	elem->prev = NULL;
 	return (elem);
 }
 
@@ -43,6 +46,7 @@ void	ft_ndadd_back(t_data **stack, t_data *elem)
 	{
 		temp = ft_ndlast(*stack);
 		temp->next = elem;
+		elem->prev = temp;
 	}
 	else
 		*stack = elem;

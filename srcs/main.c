@@ -47,8 +47,8 @@ int	main(int ac, char **av)
 		return (0);
 	}
 
-	printf("Initial linked list A:\n");
-	ft_print_list(*stack_a);
+	//printf("Initial linked list A:\n");
+	//ft_print_list(*stack_a);
 /*
 	sa(stack_a);
 	printf("Linked list A after SA operation:\n");
@@ -106,10 +106,13 @@ int	main(int ac, char **av)
 	printf("%d\n", max);
 	min = ft_find_min(stack_a);
 	printf("%d\n", min);
-*/
+
 	stack_a = ft_sort_5(stack_a, stack_b);
 	printf("Stack A:");
 	ft_print_list(*stack_a);
 	printf("Stack B:");
 	ft_print_list(*stack_b);
+*/
+	stack_a = ft_sorting(stack_a, stack_b);
+	ft_print_list(*stack_a);
 }
