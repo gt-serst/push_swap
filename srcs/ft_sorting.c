@@ -20,18 +20,21 @@ t_data	**ft_sort_100(t_data **stack_a, t_data **stack_b)
 {
 	t_data	*head;
 	t_data	*tail;
-
-	head = *stack_a;
-	tail = ft_ndlast(*stack_a);
-	printf("GET ELEM FROM TOP:\n");
-	while (ft_get_chunk_from_top(stack_a, head) != 1)
-		head = head->next;
-	printf("Top elem in chunk 1:%d\n", head->data);
-	printf("GET ELEM FROM BOTTOM:\n");
-	while (ft_get_chunk_from_bottom(stack_a, tail) != 1)
-		tail = tail->prev;
-	printf("Bottom elem in chunk 1:%d\n", tail->data);
-	ft_dispatch_chunk(stack_a, stack_b, head, tail);
+	
+	while (*stack_a)
+	{
+		head = *stack_a;
+		tail = ft_ndlast(*stack_a);
+		printf("GET ELEM FROM TOP:\n");
+		while (ft_get_chunk_from_top(stack_a, head) != 1)
+			head = head->next;
+		printf("Top elem in chunk 1:%d\n", head->data);
+		printf("GET ELEM FROM BOTTOM:\n");
+		while (ft_get_chunk_from_bottom(stack_a, tail) != 1)
+			tail = tail->prev;
+		printf("Bottom elem in chunk 1:%d\n", tail->data);
+		ft_dispatch_chunk(stack_a, stack_b, head, tail);
+	}
 	printf("Stack A:");
 	ft_print_list(*stack_a);
 	printf("Stack B:");
