@@ -98,21 +98,47 @@ int	ft_get_chunk_from_bottom(t_data **stack, t_data *tail)
 	return (chunk);
 }
 
-t_data	*ft_dispatch_chunk(t_data *hold_first, t_data *hold_second)
+void	ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *head, t_data *tail)
 {
-	if (hold_first->index <= 50 && hold_second->index > 50)
-	{
-		if (hold_first->index < (hold_second->index - 50))
-			return (hold_first);
-		else
-			return (hold_second);
+	t_data	*hold_first;
+	t_data	*hold_second;
+
+	if (head->index <= 50 && tail->index > 50 && head->index < (tail->index - 50))
+	{	
+		hold_first = head;
+		hold_second = tail;
 	}
-	if (hold_first->index > 50 && hold_second->index > 50)
+	else if (head->index <= 50 && tail->index <= 50)
 	{
-		return (hold_second);
+		hold_first = head;
+		hold_second = tail;
 	}
-	if (hold_first->index <= 50 && hold_second->index <= 50)
-		return (hold_first);
-	//random return if no matching conditions...
-	return (hold_first);
+	else
+	{
+		hold_first = tail;
+		hold_second = head;
+	}
+	ft_check_where_to_send(stack_a, stack_b, hold_first);
+	ft_check_where_to_send(stack_a, stack_b, hold_second);
+}
+
+void	ft_check_where_to_send(t_data **stack_a, t_data **stack_b, t_data *hold)
+{
+	t_data	*head;
+
+	ft_swap_to_front(stack_a, hold);
+	if (*stack_b == NULL)
+	{
+		pb(stack_a, stack_b);
+		return ;
+	}
+	pb(stack_a, stack_b);
+	head = *stack_b;
+	while (head)
+	{
+		if (hold->data > head->data)
+			return ;
+		head = head->next;
+	}
+	rb(stack_b);
 }

@@ -114,5 +114,5 @@ int	main(int ac, char **av)
 	ft_print_list(*stack_b);
 */
 	stack_a = ft_sorting(stack_a, stack_b);
-	ft_print_list(*stack_a);
+	//ft_print_list(*stack_a);
 }

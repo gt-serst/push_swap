@@ -66,8 +66,9 @@ t_data		**ft_simple_swap_to_front(t_data **stack, int maxmin);
 int		ft_get_index(t_data **stack, int maxmin);
 int		ft_get_chunk_from_top(t_data **stack, t_data *head);
 int		ft_get_chunk_from_bottom(t_data **stack, t_data *tail);
-t_data		*ft_dispatch_chunk(t_data *hold_first, t_data *hold_second);
-t_data		**ft_swap_to_front(t_data **stack, t_data *elem);
+void		ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *head, t_data *tail);
+void		ft_check_where_to_send(t_data **stack_a, t_data **stack_b, t_data *hold);
+void		ft_swap_to_front(t_data **stack, t_data *elem);
 
 void		ft_print_list(t_data *head);
 
