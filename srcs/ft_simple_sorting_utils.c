@@ -23,7 +23,10 @@ void	ft_swap_to_front(t_data **stack, t_data *elem)
 	if (ft_get_index(stack, elem->data) <= (ft_stack_size(stack) / 2))
 	{
 		while (ft_get_index(stack, elem->data) != 0)
+		{
+			//printf("Index:%d\n", ft_get_index(stack, elem->data));
 			ra(stack);
+		}
 	}
 	else
 	{

@@ -45,45 +45,38 @@ int	ft_get_index(t_data **stack, int maxmin)
 
 	index = 0;
 	head = *stack;
-	while ((*stack)->next != NULL)
+	while (head->next != NULL)
 	{
-		if ((*stack)->data == maxmin)
+		if (head->data == maxmin)
 			break ;
 		index++;
-		*stack = (*stack)->next;
+		head = head->next;
 	}
-	*stack = head;
 	return (index);
 }
 
-int	ft_get_chunk_from_top(t_data **stack, t_data *head)
+int	ft_get_chunk(t_data *elem)
 {
-	int	pos;
 	int	chunk;
-	t_data	*temp;
 
-	//printf("Elem:%d\n", head->data);
-	pos = 0;
-	temp = *stack;
-	while (temp)
-	{
-		if (head->data >= temp->data)
-			pos++;
-		temp = temp->next;
-	}
-	//printf("Pos:%d\n", pos);
-	chunk = (pos / 20) + 1;
+	//printf("Elem:%d\n", elem->data);
+	//printf("Pos:%d\n", elem->index);
+	if (elem->index % 20 == 0)
+		chunk = (elem->index / 20);
+	else
+		chunk = ((elem->index) / 20) + 1;
 	//printf("Chunk:%d\n", chunk);
 	return (chunk);
 }
 
+/*
 int	ft_get_chunk_from_bottom(t_data **stack, t_data *tail)
 {
 	int	pos;
 	int	chunk;
 	t_data	*temp;
 
-	//printf("Elem:%d\n", tail->data);
+	printf("Elem:%d\n", tail->data);
 	pos = 0;
 	temp = *stack;
 	while (temp)
@@ -92,11 +85,12 @@ int	ft_get_chunk_from_bottom(t_data **stack, t_data *tail)
 			pos++;
 		temp = temp->next;
 	}
-	//printf("Pos:%d\n", pos);
+	printf("Pos:%d\n", pos);
 	chunk = (pos / 20) + 1;
-	//printf("Chunk:%d\n", chunk);
+	printf("Chunk:%d\n", chunk);
 	return (chunk);
 }
+*/
 
 void	ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *head, t_data *tail)
 {
@@ -118,14 +112,19 @@ void	ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *head, t_data 
 		hold_first = tail;
 		hold_second = head;
 	}
-	ft_check_where_to_send(stack_a, stack_b, hold_first);
-	ft_check_where_to_send(stack_a, stack_b, hold_second);
+	ft_move_to_otherstack(stack_a, stack_b, hold_first);
+	ft_move_to_otherstack(stack_a, stack_b, hold_second);
+	//printf("STACK B:");
+	//ft_print_list(*stack_b);
 }
 
-void	ft_check_where_to_send(t_data **stack_a, t_data **stack_b, t_data *hold)
+void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 {
 	t_data	*head;
-
+	
+	//printf("HELLO\n\n\n");
+	//printf("hold:%d\n", hold->data);
+	//ft_print_list(*stack_a);
 	ft_swap_to_front(stack_a, hold);
 	if (*stack_b == NULL)
 	{

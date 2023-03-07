@@ -39,5 +39,5 @@ void	pa(t_data **stack_b, t_data **stack_a)
 void	pb(t_data **stack_a, t_data **stack_b)
 {
 	push(stack_a, stack_b);
-	ft_putstr_fd("pb\n", 1);
+	//ft_putstr_fd("pb\n", 1);
 }

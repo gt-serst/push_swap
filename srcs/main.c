@@ -47,13 +47,16 @@ int	main(int ac, char **av)
 		return (0);
 	}
 
-	//printf("Initial linked list A:\n");
-	//ft_print_list(*stack_a);
-/*
+	printf("Initial linked list A:\n");
+	ft_print_list(*stack_a);
+
 	sa(stack_a);
 	printf("Linked list A after SA operation:\n");
 	ft_print_list(*stack_a);
-
+	
+	printf("stack_a : %d, stack_a->next : %d, stack_a->prev: %d\n", (*stack_a)->data, (*stack_a)->next->data, (*stack_a)->next->prev->data);
+	return (0);
+/*
 	pb(stack_a, stack_b);
 	printf("Linked list A after PB operation:\n");
 	ft_print_list(*stack_a);

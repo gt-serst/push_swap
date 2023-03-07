@@ -20,6 +20,9 @@ void	swap(t_data **stack)
 	(*stack)->next = temp->next;
 	temp->next = *stack;
 	*stack = temp;
+	temp = (*stack)->prev;
+	(*stack)->prev = temp->prev;
+	temp->prev = temp;
 }
 
 void	push(t_data **stack_src, t_data **stack_dst)

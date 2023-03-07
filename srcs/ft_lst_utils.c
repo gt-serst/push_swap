@@ -21,7 +21,7 @@ t_data	*ft_ndnew(int data, int index)
 		return (NULL);
 	elem->data = data;
 	elem->index = index;
-	printf("Index:%d\n", elem->index);
+	//printf("Index:%d\n", elem->index);
 	elem->next = NULL;
 	elem->prev = NULL;
 	return (elem);
