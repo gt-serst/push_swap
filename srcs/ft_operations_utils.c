@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_operations_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/08 16:18:45 by gt-serst          #+#    #+#             */
+/*   Updated: 2023/03/08 17:27:29 by gt-serst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
  /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,7 +18,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:03:08 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/27 21:24:20 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:03:05 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +26,19 @@
 
 void	swap(t_data **stack)
 {
-	t_data	*temp;
-
-	temp = (*stack)->next;
-	(*stack)->next = temp->next;
-	temp->next = *stack;
-	*stack = temp;
-	temp = (*stack)->prev;
-	(*stack)->prev = temp->prev;
-	temp->prev = temp;
+	t_data	*left;
+	t_data	*right;
+	
+	if (!(*stack))
+			return ;
+	left = (*stack);
+	right = (*stack)->next;
+	left->prev = right;
+	left->next = right->next;
+	right->next->prev = left;
+	right->next = left;
+	right->prev = NULL;
+	(*stack) = right;
 }
 
 void	push(t_data **stack_src, t_data **stack_dst)
@@ -31,6 +47,9 @@ void	push(t_data **stack_src, t_data **stack_dst)
 
 	temp = (*stack_src)->next;
 	(*stack_src)->next = (*stack_dst);
+	temp->prev = NULL;
+	if (*stack_dst != NULL)
+		(*stack_dst)->prev = (*stack_src);
 	(*stack_dst) = (*stack_src);
 	(*stack_src) = temp;
 }

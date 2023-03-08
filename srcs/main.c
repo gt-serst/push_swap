@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:48:11 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/27 21:24:28 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:25:49 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,21 +49,36 @@ int	main(int ac, char **av)
 
 	printf("Initial linked list A:\n");
 	ft_print_list(*stack_a);
-
+	
+	printf("stack_a : %d, stack_a->next : %d, stack_a->prev: %d\n", (*stack_a)->next->next->data, (*stack_a)->next->next->next->data, (*stack_a)->next->next->prev->data);
+	
 	sa(stack_a);
 	printf("Linked list A after SA operation:\n");
 	ft_print_list(*stack_a);
 	
-	printf("stack_a : %d, stack_a->next : %d, stack_a->prev: %d\n", (*stack_a)->data, (*stack_a)->next->data, (*stack_a)->next->prev->data);
-	return (0);
-/*
+	printf("stack_a : %d, stack_a->next : %d, stack_a->prev: %d\n", (*stack_a)->next->next->data, (*stack_a)->next->next->next->data, (*stack_a)->next->next->prev->data);
+
 	pb(stack_a, stack_b);
-	printf("Linked list A after PB operation:\n");
+	pb(stack_a, stack_b);
+	pb(stack_a, stack_b);
+	printf("Linked list A after PB PB PB operation:\n");
 	ft_print_list(*stack_a);
-	
-	printf("Linked list B after PB:\n");
+
+	printf("stack_a : %d, stack_a->next : %d, stack_a->prev: %d\n", (*stack_a)->next->data, (*stack_a)->next->next->data, (*stack_a)->next->prev->data);
+
+	printf("Linked list B after PB PB PB:\n");
 	ft_print_list(*stack_b);
 
+	printf("stack_a : %d, stack_a->next : %d, stack_a->prev: %d\n", (*stack_a)->next->data, (*stack_a)->next->next->data, (*stack_a)->next->prev->data);
+	printf("stack_b : %d, stack_b->next : %d, stack_b->prev: %d\n", (*stack_b)->next->data, (*stack_b)->next->next->data, (*stack_b)->next->prev->data);
+	pb(stack_a, stack_b);
+	ft_print_list(*stack_a);
+	ft_print_list(*stack_b);
+	printf("stack_a->next : %d, stack_a->next->prev : %d", (*stack_a)->next->data, (*stack_a)->next->prev->data);
+	printf("stack_b : %d, stack_b->next : %d, stack_b->prev: %d\n", (*stack_b)->next->next->data, (*stack_b)->next->next->next->data, (*stack_b)->next->next->prev->data);
+	
+	return (0);
+/*
 	pa(stack_b, stack_a);
 	printf("Linked list B after PA:\n");
 	ft_print_list(*stack_b);
