@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:48:11 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/08 17:25:49 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/09 18:50:13 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int	main(int ac, char **av)
 		return (0);
 	}
 
+/*
 	printf("Initial linked list A:\n");
 	ft_print_list(*stack_a);
 	
@@ -77,8 +78,6 @@ int	main(int ac, char **av)
 	printf("stack_a->next : %d, stack_a->next->prev : %d", (*stack_a)->next->data, (*stack_a)->next->prev->data);
 	printf("stack_b : %d, stack_b->next : %d, stack_b->prev: %d\n", (*stack_b)->next->next->data, (*stack_b)->next->next->next->data, (*stack_b)->next->next->prev->data);
 	
-	return (0);
-/*
 	pa(stack_b, stack_a);
 	printf("Linked list B after PA:\n");
 	ft_print_list(*stack_b);
@@ -86,9 +85,18 @@ int	main(int ac, char **av)
 	printf("Linked list A after PA:\n");
 	ft_print_list(*stack_a);
 
+
 	ra(stack_a);
 	printf("Linked list A after RA:\n");
 	ft_print_list(*stack_a);
+	*stack_a = (*stack_a)->next;
+	printf("stack_a: %d, stack_a->next : %d\n", (*stack_a)->data, (*stack_a)->next->data);
+	pa(stack_b, stack_a);
+	ft_print_list(*stack_a);
+	*stack_a = (*stack_a)->next;
+	printf("stack_a: %d, stack_a->next : %d\n", (*stack_a)->data, (*stack_a)->prev->data);
+	*stack_a = (*stack_a)->next;
+	printf("stack_a: %d, stack_a->next : %d\n", (*stack_a)->data, (*stack_a)->prev->data);
 
 	pb(stack_a, stack_b);
 	pb(stack_a, stack_b);
@@ -109,6 +117,13 @@ int	main(int ac, char **av)
 	rrb(stack_b);
 	printf("Linked list B after RRB:\n");
 	ft_print_list(*stack_b);
+	printf("stack_b : %d, stack_b->next : %d, stack_b->prev: %d\n", (*stack_b)->next->data, (*stack_b)->next->next->data, (*stack_b)->next->prev->data);
+	*stack_b = (*stack_b)->next;
+	printf("stack_b: %d, stack_b->prev : %d\n", (*stack_b)->data, (*stack_b)->prev->data);
+	*stack_b = (*stack_b)->next;
+	printf("stack_b: %d, stack_b->prev : %d\n", (*stack_b)->data, (*stack_b)->prev->data);
+	*stack_b = (*stack_b)->next;
+	printf("stack_b: %d, stack_b->prev : %d\n", (*stack_b)->data, (*stack_b)->prev->data);
 
 	rra(stack_a);
 	printf("Linked list A after RRA:\n");

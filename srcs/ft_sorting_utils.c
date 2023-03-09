@@ -38,21 +38,21 @@ int	ft_get_min(t_data **stack)
 	return (min);
 }
 
-int	ft_get_index(t_data **stack, int maxmin)
+int	ft_get_spot(t_data **stack, t_data *elem)
 {
-	int	index;
+	int		spot;
 	t_data	*head;
 
-	index = 0;
+	spot = 0;
 	head = *stack;
 	while (head->next != NULL)
 	{
-		if (head->data == maxmin)
+		if (head->data == elem->data)
 			break ;
-		index++;
+		spot++;
 		head = head->next;
 	}
-	return (index);
+	return (spot);
 }
 
 int	ft_get_chunk(t_data *elem)
@@ -96,9 +96,10 @@ void	ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *head, t_data 
 {
 	t_data	*hold_first;
 	t_data	*hold_second;
-
+	
+	//printf("index head:%d\n", head->index);
 	if (head->index <= 50 && tail->index > 50 && head->index < (tail->index - 50))
-	{	
+	{
 		hold_first = head;
 		hold_second = tail;
 	}
@@ -112,6 +113,7 @@ void	ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *head, t_data 
 		hold_first = tail;
 		hold_second = head;
 	}
+	//printf("HELLO\n\n\n\n\n");
 	ft_move_to_otherstack(stack_a, stack_b, hold_first);
 	ft_move_to_otherstack(stack_a, stack_b, hold_second);
 	//printf("STACK B:");

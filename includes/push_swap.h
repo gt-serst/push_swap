@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:45:51 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/27 21:22:21 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/09 18:31:39 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,13 @@ void		ft_put_index(t_data **stack);
 int		ft_stack_size(t_data **stack);
 t_data		**ft_sort_2(t_data **stack_a);
 t_data		**ft_sort_3(t_data **stack_a);
+t_data		**ft_sort_4(t_data **stack_a, t_data **stack_b);
 t_data		**ft_sort_5(t_data **stack_a, t_data **stack_b);
 t_data		**ft_sort_100(t_data **stack_a, t_data **stack_b);
 int		ft_get_max(t_data **stack);
 int		ft_get_min(t_data **stack);
-t_data		**ft_simple_swap_to_front(t_data **stack, int maxmin);
-int		ft_get_index(t_data **stack, int maxmin);
+t_data		**ft_simple_swap_to_front(t_data **stack, t_data *elem);
+int		ft_get_spot(t_data **stack, t_data *elem);
 int		ft_get_chunk(t_data *elem);
 void		ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *head, t_data *tail);
 void		ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold);

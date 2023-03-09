@@ -51,8 +51,8 @@ t_data	**ft_sort_100(t_data **stack_a, t_data **stack_b)
 	chunk_max = (ft_stack_size(stack_a) / 20) + 1;
 	while (*stack_a && chunk <= chunk_max)
 	{
-		printf("STACK A\n");
-		ft_print_list(*stack_a);
+		//printf("STACK A\n");
+		//ft_print_list(*stack_a);
 		printf("STACK B\n");
 		ft_print_list(*stack_b);
 		printf("CHUNK \n %d\n", chunk);
@@ -73,7 +73,7 @@ t_data	**ft_sort_100(t_data **stack_a, t_data **stack_b)
 			//printf("tail->data: %d\n", tail->data);
 			//printf("Index tail->data: %d\n", ft_get_index(stack_a, tail->data));
 			//printf("Bottom elem in chunk 1:%d\n", tail->data);
-			if (!tail)
+			if (!tail || ft_get_chunk(tail) != chunk)
 			{
 				ft_move_to_otherstack(stack_a, stack_b, head);
 				count++;
@@ -81,6 +81,10 @@ t_data	**ft_sort_100(t_data **stack_a, t_data **stack_b)
 			}
 			else
 			{
+				//printf("head:%d\n", head->data);
+				//printf("head->next:%d\n", head->next->data);
+				//printf("tail:%d\n", tail->data);
+				//printf("tail->prev:%d\n", tail->prev->data);
 				ft_dispatch_chunk(stack_a, stack_b, head, tail);
 				count += 2;
 			}
@@ -96,8 +100,8 @@ t_data	**ft_sort_100(t_data **stack_a, t_data **stack_b)
 			count = 0;
 		}
 	}
-	printf("Stack A:");
-	ft_print_list(*stack_a);
+	//printf("Stack A:");
+	//ft_print_list(*stack_a);
 	printf("Stack B:");
 	ft_print_list(*stack_b);
 
@@ -111,7 +115,9 @@ t_data	**ft_sorting(t_data **stack_a, t_data **stack_b)
 		stack_a = ft_sort_2(stack_a);
 	if (ft_stack_size(stack_a) == 3)
 		stack_a = ft_sort_3(stack_a);
-	if (ft_stack_size(stack_a) == 4 || ft_stack_size(stack_a) == 5)
+	if (ft_stack_size(stack_a) == 4)
+		stack_a = ft_sort_4(stack_a, stack_b);
+	if (ft_stack_size(stack_a) == 5)
 		stack_a = ft_sort_5(stack_a, stack_b);
 	if (ft_stack_size(stack_a) > 5)
 		stack_a = ft_sort_100(stack_a, stack_b);

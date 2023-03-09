@@ -40,30 +40,53 @@ t_data	**ft_sort_3(t_data **stack_a)
 	return (stack_a);
 }
 
+t_data **ft_sort_4(t_data **stack_a, t_data **stack_b)
+{
+	t_data	*head;
+	t_data	*elem_min;
+
+	head = *stack_a;
+	elem_min = NULL;
+	while (head)
+	{
+		if (head->index == 0)
+		{
+			elem_min = head;
+			break ;
+		}
+		head = head->next;
+	}
+	stack_a = ft_simple_swap_to_front(stack_a, elem_min);
+	pb(stack_a, stack_b);
+	ft_sort_3(stack_a);
+	pa(stack_b, stack_a);
+	return (stack_a);
+}
+
 t_data	**ft_sort_5(t_data **stack_a, t_data **stack_b)
 {
-	int	max;
-	int	min;
+	t_data *head;
+	t_data *elem_max;
+	t_data *elem_min;
 
-	min = ft_get_min(stack_a);
-	if (ft_stack_size(stack_a) == 4)
+	head = *stack_a;
+	elem_max = NULL;
+	elem_min = NULL;
+	while (head)
 	{
-		stack_a = ft_simple_swap_to_front(stack_a, min);
-		pb(stack_a, stack_b);
-		ft_sort_3(stack_a);
-		pa(stack_b, stack_a);
+		if (head->index == ft_stack_size(stack_a))
+			elem_max = head;
+		if (head->index == 0)
+			elem_min = head;
+		head = head->next;
 	}
-	else
-	{
-		max = ft_get_max(stack_a);
-		stack_a = ft_simple_swap_to_front(stack_a, max);
-		pb(stack_a, stack_b);
-		stack_a = ft_simple_swap_to_front(stack_a, min);
-		pb(stack_a, stack_b);
-		ft_sort_3(stack_a);
-		pa(stack_b, stack_a);
-		pa(stack_b, stack_a);
-		ra(stack_a);
-	}
+	stack_a = ft_simple_swap_to_front(stack_a, elem_max);
+	pb(stack_a, stack_b);
+	stack_a = ft_simple_swap_to_front(stack_a, elem_min);
+	pb(stack_a, stack_b);
+	ft_sort_3(stack_a);
+	pa(stack_b, stack_a);
+	pa(stack_b, stack_a);
+	ra(stack_a);
 	return (stack_a);
 }
