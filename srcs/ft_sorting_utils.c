@@ -58,14 +58,14 @@ int	ft_get_spot(t_data **stack, t_data *elem)
 int	ft_get_chunk(t_data *elem)
 {
 	int	chunk;
-
+	
 	//printf("Elem:%d\n", elem->data);
 	//printf("Pos:%d\n", elem->index);
 	if (elem->index % 20 == 0)
 		chunk = (elem->index / 20);
 	else
 		chunk = ((elem->index) / 20) + 1;
-	//printf("Chunk:%d\n", chunk);
+	//printf("Chunk:%d\n\n", chunk);
 	return (chunk);
 }
 
@@ -110,6 +110,7 @@ void	ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *top, t_data *
 	int		top_spot;
 	int		bottom_spot;
 	int		stack_size;
+	t_data	*restriction;
 
 	//ft_print_list(*stack_a);	
 	//printf("top:%d\n", top->data);
@@ -124,13 +125,21 @@ void	ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *top, t_data *
 	{
 		//printf("moves_from_top:%d\n", ft_get_moves_to_top(top_spot, stack_size));
 		//printf("moves_from_bottom:%d\n", ft_get_moves_to_top(bottom_spot, stack_size));
+		restriction = bottom;
 		ft_move_to_otherstack(stack_a, stack_b, top);
+		ft_is_candidate(stack_a, stack_b, restriction);
 		ft_move_to_otherstack(stack_a, stack_b, bottom);
 	}
 	else
 	{
+		//printf("First move");
+		restriction = top;
 		ft_move_to_otherstack(stack_a, stack_b, bottom);
+		ft_is_candidate(stack_a, stack_b, restriction);
+		//printf("Second move");
 		ft_move_to_otherstack(stack_a, stack_b, top);
+
+		//printf("HELLOdd\n\n");
 	}
 	
 	//printf("current stack size:%d\n", ft_stack_size(stack_a));
@@ -176,6 +185,22 @@ void	ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *top, t_data *
 	//ft_print_list(*stack_b);
 }
 
+void	ft_is_candidate(t_data **stack_a, t_data **stack_b, t_data *restriction)
+{
+	t_data	*candidate;
+	t_data	*head;
+
+	candidate = *stack_a;
+	head = *stack_b;
+	while (candidate != restriction && candidate->data < head->data)
+	{
+		//printf("Candidat !");
+		ft_move_to_otherstack(stack_a, stack_b, candidate);
+		candidate = *stack_a;
+		//head = *stack_b;
+	}
+}
+
 void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 {
 	t_data	*head;
@@ -199,9 +224,10 @@ void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 	head = *stack_b;
 	while (head)
 	{
+		//printf("HELLO\n\n\n\n");
 		if (hold->data > head->data)
 			return ;
 		head = head->next;
+		//printf("HELLO\n\n\n\n");
 	}
-	rb(stack_b);
 }

@@ -15,6 +15,7 @@ t_data	**ft_simple_swap_to_front(t_data **stack, t_data *elem)
 	return (stack);
 }
 
+
 void	ft_swap_to_front(t_data **stack, t_data *elem)
 {
 	//printf("Hold chunk:%d\n", elem->data);
@@ -37,5 +38,19 @@ void	ft_swap_to_front(t_data **stack, t_data *elem)
 			//ft_print_list(*stack);
 			rra(stack);
 		}
+	}
+}
+
+void	ft_swap_to_front_b(t_data **stack, t_data *elem)
+{
+	if (ft_get_spot(stack, elem) <= (ft_stack_size(stack) / 2))
+	{
+		while (ft_get_spot(stack, elem) != 0)
+			rb(stack);
+	}
+	else
+	{
+		while (ft_get_spot(stack, elem) != 0)
+			rrb(stack);
 	}
 }

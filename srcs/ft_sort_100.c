@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:35:13 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/10 20:19:55 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/10 23:43:11 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ void	ft_get_final_stack(t_data **stack_a, t_data **stack_b)
 		{
 			if (temp->index == (stack_size - count))
 			{
-				ft_print_list(*stack_b);
-				printf("elem:%d\n", temp->data);
-				printf("elem->index:%d\n", temp->index);
-				ft_swap_to_front(stack_b, temp);
+				ft_swap_to_front_b(stack_b, temp);
 				pa(stack_b, stack_a);
 				break ;
 			}
