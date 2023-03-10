@@ -3,7 +3,7 @@
 void	ra(t_data **stack_a)
 {
 	move_to_end(stack_a);
-	//ft_putstr_fd("ra\n", 1);
+	ft_putstr_fd("ra\n", 1);
 }
 
 void	rb(t_data **stack_b)
@@ -21,7 +21,7 @@ void	rr(t_data **stack_a, t_data **stack_b)
 void	rra(t_data **stack_a)
 {
 	move_to_front(stack_a);
-	//ft_putstr_fd("rra\n", 1);
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	rrb(t_data **stack_b)

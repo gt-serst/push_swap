@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:45:51 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/09 18:31:39 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/10 19:34:25 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,10 @@ t_data		**ft_simple_swap_to_front(t_data **stack, t_data *elem);
 int		ft_get_spot(t_data **stack, t_data *elem);
 int		ft_get_chunk(t_data *elem);
 void		ft_dispatch_chunk(t_data **stack_a, t_data **stack_b, t_data *head, t_data *tail);
+int			ft_get_moves_to_top(int spot, int stack_size);
 void		ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold);
 void		ft_swap_to_front(t_data **stack, t_data *elem);
+void		ft_get_final_stack(t_data **stack_a, t_data **stack_b);
 
 void		ft_print_list(t_data *head);
 

@@ -6,7 +6,7 @@
 #    By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 12:01:00 by gt-serst          #+#    #+#              #
-#    Updated: 2023/02/27 17:19:59 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/03/10 19:33:43 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS				= main.c \
 					  ft_sorting.c \
 					  ft_sorting_utils.c \
 					  ft_simple_sorting.c \
-					  ft_simple_sorting_utils.c
+					  ft_simple_sorting_utils.c \
+					  ft_sort_100.c
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 

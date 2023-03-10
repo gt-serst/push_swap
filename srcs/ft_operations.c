@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:00:22 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/27 21:24:10 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:57:35 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ void	pa(t_data **stack_b, t_data **stack_a)
 void	pb(t_data **stack_a, t_data **stack_b)
 {
 	push(stack_a, stack_b);
-	//ft_putstr_fd("pb\n", 1);
+	ft_putstr_fd("pb\n", 1);
 }

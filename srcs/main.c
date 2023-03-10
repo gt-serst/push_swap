@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:48:11 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/09 18:50:13 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/10 20:18:30 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,5 +147,6 @@ int	main(int ac, char **av)
 	ft_print_list(*stack_b);
 */
 	stack_a = ft_sorting(stack_a, stack_b);
-	//ft_print_list(*stack_a);
+	ft_print_list(*stack_a);
+	return (0);
 }

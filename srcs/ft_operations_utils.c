@@ -6,7 +6,7 @@
 /*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:18:45 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/09 17:50:23 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/10 15:48:01 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ void	push(t_data **stack_src, t_data **stack_dst)
 		return ;
 	temp = (*stack_src)->next;
 	(*stack_src)->next = (*stack_dst);
-	temp->prev = NULL;
 	if (*stack_dst != NULL)
 		(*stack_dst)->prev = (*stack_src);
 	(*stack_dst) = (*stack_src);
 	(*stack_src) = temp;
+	if (*stack_src != NULL)
+		(*stack_src)->prev = NULL;
 }
 
 void	move_to_end (t_data **stack)
