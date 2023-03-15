@@ -203,7 +203,7 @@ void	ft_is_candidate(t_data **stack_a, t_data **stack_b, t_data *restriction)
 
 void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 {
-	t_data	*head;
+	//t_data	*head;
 	
 	//printf("Move to otherstack\n\n");
 	//printf("hold:%d\n", hold->data);
@@ -218,16 +218,70 @@ void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 	}
 	//printf("Stack A:");
 	//ft_print_list(*stack_a);
-	pb(stack_a, stack_b);
+	//pb(stack_a, stack_b);
+	ft_put_at_right_place(stack_a, stack_b, hold);
+	//pb(stack_a, stack_b);
 	//printf("New elem in stack B:\n\n");
 	//ft_print_list(*stack_b);
+	/*
 	head = *stack_b;
 	while (head)
 	{
 		//printf("HELLO\n\n\n\n");
 		if (hold->data > head->data)
+		{
+			pb(stack_a, stack_b);
+			ft_put_at_right_place(stack_b, hold);
 			return ;
-		head = head->next;
+		}
 		//printf("HELLO\n\n\n\n");
+		head = head->next;
 	}
+	pb(stack_a, stack_b);
+	rb(stack_b);
+	*/
+}
+
+void	ft_put_at_right_place(t_data **stack_a, t_data **stack_b, t_data *hold)
+{
+	t_data	*head;
+	t_data	*tail;
+
+	head = *stack_b;
+	tail = ft_ndlast(*stack_b);
+	if (hold->data < head->data && hold->data > tail->data)
+	{
+		rrb(stack_b);
+		pb(stack_a, stack_b);
+	}
+	if (hold->data < head->data)
+	{
+		pb(stack_a, stack_b);
+		rb(stack_b);
+	}
+	if (hold->data > head->data && hold->data > tail->data)
+	{
+		pb(stack_a, stack_b);
+	}
+	if (hold->data > head->data && hold->data < tail->data)
+	{
+		rrb(stack_b);
+		pb(stack_a, stack_b);
+	}
+/*
+	if (head->data < head->next->data)
+		return ;
+	while (head->data < tail->data)
+	{
+		rrb(stack_b);
+		sb(stack_b);
+		tail = ft_ndlast(*stack_b);
+	}
+	while (tail->data < head->data)
+	{
+		rb(stack_b);
+		tail = ft_ndlast(*stack_b);
+		head = *stack_b;
+	}
+*/
 }
