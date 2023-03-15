@@ -249,6 +249,22 @@ void	ft_put_at_right_place(t_data **stack_a, t_data **stack_b, t_data *hold)
 
 	head = *stack_b;
 	tail = ft_ndlast(*stack_b);
+	if (ft_is_max(stack_b, hold))
+	{
+		while (!ft_is_min(stack_b, head))
+		{
+			rb(stack_b);
+			head = *stack_b;
+		}
+	}
+	if (ft_is_min(hold))
+	{
+		while (!ft_is_max(stack_b, head))
+		{
+			rb(stack_b);
+			head = *stack_b;
+		}
+	}
 	if (hold->data < head->data && hold->data > tail->data)
 	{
 		rrb(stack_b);
