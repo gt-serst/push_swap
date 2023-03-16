@@ -65,7 +65,7 @@ int	ft_get_chunk(t_data *elem)
 		chunk = (elem->index / 20);
 	else
 		chunk = ((elem->index) / 20) + 1;
-	//printf("Chunk:%d\n\n", chunk);
+	//printf("Chunk:%d\n\f (ft_is_max(stack_b, hold)", chunk));
 	return (chunk);
 }
 
@@ -270,20 +270,37 @@ int	ft_is_min(t_data **stack, t_data *elem)
 	return (1);
 }
 
+int	ft_get_position(t_data **stack, t_data *elem)
+{
+	int		position;
+	t_data	*head;
+
+	position = 0;
+	while (head)
+	{
+		if (elem->data > head->data)
+			position++;
+		head = head->next;
+	}
+	return (position);
+}
+
 void	ft_put_at_right_place(t_data **stack_b, t_data *hold)
 {
 	t_data	*head;
+	t_data	*tail;
 
 	head = *stack_b;
+	tail = ft_ndlast(*stack_b);
 	if (ft_is_max(stack_b, hold))
 	{
-		while (!ft_is_min(stack_b, head))
+		while (!ft_is_min(stack_b, tail))
 		{
 			rb(stack_b);
-			head = *stack_b;
+			tail = ft_ndlast(*stack_b);
 		}
 	}
-	if (ft_is_min(stack_b, hold))
+	else if (ft_is_min(stack_b, hold))
 	{
 		while (!ft_is_max(stack_b, head))
 		{
@@ -291,7 +308,28 @@ void	ft_put_at_right_place(t_data **stack_b, t_data *hold)
 			head = *stack_b;
 		}
 	}
-/*
+	else
+	{
+		if ()
+		{
+			while (head && (hold->index < head->index || hold->index > tail->index))
+			{
+				rrb(stack_b);
+				head = *stack_b;
+				tail = ft_ndlast(*stack_b);
+			}
+		}
+		else
+		{
+			while (head && (hold->index < head->index || hold->index > tail->index))
+			{
+				rb(stack_b);
+				head = *stack_b;
+				tail = ft_ndlast(*stack_b);
+			}
+		}
+	}
+	/*
 	if (hold->data < head->data && hold->data > tail->data)
 	{
 		rrb(stack_b);
