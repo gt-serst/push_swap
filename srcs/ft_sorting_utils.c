@@ -219,8 +219,8 @@ void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 	//printf("Stack A:");
 	//ft_print_list(*stack_a);
 	//pb(stack_a, stack_b);
-	ft_put_at_right_place(stack_a, stack_b, hold);
-	//pb(stack_a, stack_b);
+	ft_put_at_right_place(stack_b, hold);
+	pb(stack_a, stack_b);
 	//printf("New elem in stack B:\n\n");
 	//ft_print_list(*stack_b);
 	/*
@@ -242,13 +242,39 @@ void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 	*/
 }
 
-void	ft_put_at_right_place(t_data **stack_a, t_data **stack_b, t_data *hold)
+int	ft_is_max(t_data **stack, t_data *elem)
 {
 	t_data	*head;
-	t_data	*tail;
+
+	head = *stack;
+	while (head)
+	{
+		if (elem->index < head->index)
+			return (0);
+		head = head->next;
+	}
+	return (1);
+}
+
+int	ft_is_min(t_data **stack, t_data *elem)
+{
+	t_data	*head;
+
+	head = *stack;
+	while (head)
+	{
+		if (elem->index > head->index)
+			return (0);
+		head = head->next;
+	}
+	return (1);
+}
+
+void	ft_put_at_right_place(t_data **stack_b, t_data *hold)
+{
+	t_data	*head;
 
 	head = *stack_b;
-	tail = ft_ndlast(*stack_b);
 	if (ft_is_max(stack_b, hold))
 	{
 		while (!ft_is_min(stack_b, head))
@@ -257,7 +283,7 @@ void	ft_put_at_right_place(t_data **stack_a, t_data **stack_b, t_data *hold)
 			head = *stack_b;
 		}
 	}
-	if (ft_is_min(hold))
+	if (ft_is_min(stack_b, hold))
 	{
 		while (!ft_is_max(stack_b, head))
 		{
@@ -265,6 +291,7 @@ void	ft_put_at_right_place(t_data **stack_a, t_data **stack_b, t_data *hold)
 			head = *stack_b;
 		}
 	}
+/*
 	if (hold->data < head->data && hold->data > tail->data)
 	{
 		rrb(stack_b);
@@ -284,6 +311,7 @@ void	ft_put_at_right_place(t_data **stack_a, t_data **stack_b, t_data *hold)
 		rrb(stack_b);
 		pb(stack_a, stack_b);
 	}
+*/
 /*
 	if (head->data < head->next->data)
 		return ;

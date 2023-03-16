@@ -73,7 +73,9 @@ void		ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold);
 void		ft_is_candidate(t_data **stack_a, t_data **stack_b, t_data *restriction);
 void		ft_swap_to_front(t_data **stack, t_data *elem);
 void		ft_swap_to_front_b(t_data **stack, t_data *elem);
-void		ft_put_at_right_place(t_data **stack_a, t_data **stack_b, t_data *hold);
+void		ft_put_at_right_place(t_data **stack_b, t_data *hold);
+int		ft_is_max(t_data **stack, t_data *elem);
+int		ft_is_min(t_data **stack, t_data *elem);
 void		ft_get_final_stack(t_data **stack_a, t_data **stack_b);
 
 void		ft_print_list(t_data *head);
