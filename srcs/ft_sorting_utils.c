@@ -269,66 +269,211 @@ int	ft_is_min(t_data **stack, t_data *elem)
 	}
 	return (1);
 }
-
+/*
 int	ft_get_position(t_data **stack, t_data *elem)
 {
 	int		position;
 	t_data	*head;
+	t_data	*tail;
 
 	position = 0;
-	while (head)
+	head = *stack;
+	tail = ft_ndlast(*stack);
+	if (elem->index > head->index)
 	{
-		if (elem->data > head->data)
+		while (elem->data > tail->data)
+		{
 			position++;
-		head = head->next;
+			tail = tail->prev;
+		}
 	}
+	else
+	{
+		while (elem->data < head->data)
+		{
+			position++;
+			head = head->next;
+		}
+	}
+	printf("Elem: %d\n\n\n", elem->data);
+	ft_print_list(*stack);
+	printf("Position:%d\n\n\n", position);
 	return (position);
 }
+*/
 
-void	ft_put_at_right_place(t_data **stack_b, t_data *hold)
+int	ft_get_pos_from_bottom(t_data **stack, t_data *elem)
+{
+	int		pos;
+	t_data	*tail;
+
+	pos = 0;
+	tail = ft_ndlast(*stack);
+	while (tail && elem->data > tail->data)
+	{
+		pos++;
+		tail = tail->prev;
+	}
+	return (pos);
+}
+
+int	ft_get_pos_from_top(t_data **stack, t_data *elem)
+{
+	int		pos;
+	t_data	*head;
+
+	pos = 0;
+	head = *stack;
+	while (head && elem->data < head->data)
+	{
+		pos++;
+		head = head->next;
+	}
+	return (pos);
+}
+
+void	ft_swap_from_bottom(t_data **stack_b, t_data *hold, int pos)
 {
 	t_data	*head;
 	t_data	*tail;
 
 	head = *stack_b;
 	tail = ft_ndlast(*stack_b);
-	if (ft_is_max(stack_b, hold))
+	while (head && (hold->index < head->index || hold->index > tail->index))
 	{
-		while (!ft_is_min(stack_b, tail))
-		{
+		if (pos <= ft_stack_size(stack_b) / 2)
+			rrb(stack_b);
+		else
 			rb(stack_b);
-			tail = ft_ndlast(*stack_b);
-		}
+		head = *stack_b;
+		tail = ft_ndlast(*stack_b);
 	}
-	else if (ft_is_min(stack_b, hold))
+}
+
+void	ft_swap_from_top(t_data **stack_b, t_data *hold, int pos)
+{
+	t_data	*head;
+	t_data	*tail;
+
+	head = *stack_b;
+	tail = ft_ndlast(*stack_b);
+	while (head && (hold->index < head->index || hold->index > tail->index))
 	{
-		while (!ft_is_max(stack_b, head))
-		{
+		if (pos <= ft_stack_size(stack_b) / 2)
 			rb(stack_b);
-			head = *stack_b;
-		}
+		else
+			rrb(stack_b);
+		head = *stack_b;
+		tail = ft_ndlast(*stack_b);
 	}
-	else
+}
+
+void	ft_swap_top_from_bottom(t_data **stack_b, int pos)
+{
+	t_data	*tail;
+
+	tail = ft_ndlast(*stack_b);
+	while(!ft_is_min(stack_b, tail))
 	{
-		if ()
+		if (pos <= ft_stack_size(stack_b) / 2)
 		{
-			while (head && (hold->index < head->index || hold->index > tail->index))
-			{
-				rrb(stack_b);
-				head = *stack_b;
-				tail = ft_ndlast(*stack_b);
-			}
+			printf("A\n");
+			rrb(stack_b);
 		}
 		else
 		{
-			while (head && (hold->index < head->index || hold->index > tail->index))
-			{
-				rb(stack_b);
-				head = *stack_b;
-				tail = ft_ndlast(*stack_b);
-			}
+			printf("A\n");
+			rb(stack_b);
 		}
+		tail = ft_ndlast(*stack_b);
 	}
+}
+
+void	ft_swap_top_from_top(t_data **stack_b, int pos)
+{
+	t_data	*tail;
+
+	tail = ft_ndlast(*stack_b);
+	while(!ft_is_min(stack_b, tail))
+	{
+		if (pos <= ft_stack_size(stack_b) / 2)
+		{
+			printf("A\n");
+			rb(stack_b);
+		}
+		else
+		{
+			printf("A\n");
+			rrb(stack_b);
+		}
+		tail = ft_ndlast(*stack_b);
+	}
+}
+
+void	ft_swap_flop_from_bottom(t_data **stack_b, int pos)
+{
+	t_data	*head;
+
+	head = *stack_b;
+	while (!ft_is_max(stack_b, head))
+	{
+		if (pos <= ft_stack_size(stack_b) / 2)
+			rrb(stack_b);
+		else
+			rb(stack_b);
+		head = *stack_b;
+	}
+}
+
+void	ft_swap_flop_from_top(t_data **stack_b, int pos)
+{
+	t_data	*head;
+
+	head = *stack_b;
+	while (!ft_is_max(stack_b, head))
+	{
+		if (pos <= ft_stack_size(stack_b) / 2)
+			rb(stack_b);
+		else
+			rrb(stack_b);
+		head = *stack_b;
+	}
+}
+
+void	ft_put_at_right_place(t_data **stack_b, t_data *hold)
+{
+	int		pos;
+	t_data	*head;
+
+	head = *stack_b;
+	if (hold->index > head->index)
+	{
+		//printf("Elem:%d\n", hold->data);
+		//ft_print_list(*stack_b);
+		pos = ft_get_pos_from_bottom(stack_b, hold);
+		//printf("Position:%d\n", pos);
+		if (ft_is_max(stack_b, hold))
+			ft_swap_top_from_bottom(stack_b, pos);
+		else if (ft_is_min(stack_b, hold))
+			ft_swap_flop_from_bottom(stack_b, pos);
+		//printf("Position:%d\n", pos);
+		else
+			ft_swap_from_bottom(stack_b, hold, pos);
+	}
+	else
+	{
+		//printf("Elem:%d\n", hold->data);
+		//ft_print_list(*stack_b);
+		pos = ft_get_pos_from_top(stack_b, hold);
+		//printf("Position:%d\n", pos);
+		if (ft_is_max(stack_b, hold))
+			ft_swap_top_from_top(stack_b, pos);
+		else if (ft_is_min(stack_b, hold))
+			ft_swap_flop_from_top(stack_b, pos);
+		//printf("Position:%d\n", pos);
+		else
+			ft_swap_from_top(stack_b, hold, pos);
+	}	
 	/*
 	if (hold->data < head->data && hold->data > tail->data)
 	{
