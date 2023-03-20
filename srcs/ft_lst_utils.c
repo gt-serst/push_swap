@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:18:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/27 20:49:22 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/20 19:29:57 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ t_data	*ft_ndnew(int data, int index)
 		return (NULL);
 	elem->data = data;
 	elem->index = index;
-	//printf("Index:%d\n", elem->index);
 	elem->next = NULL;
 	elem->prev = NULL;
 	return (elem);
@@ -51,22 +50,6 @@ void	ft_ndadd_back(t_data **stack, t_data *elem)
 	else
 		*stack = elem;
 }
-
-/*
-static void	ft_nddelone(t_data *lst, void (*del)(void *))
-{
-	if (!lst || !del)
-		return ;
-	del((char *)lst->data);
-	free(lst);
-	lst = NULL;
-}
-
-static void	ft_del(void	*content)
-{
-	free(content);
-}
-*/
 
 void	ft_ndclear(t_data **stack)
 {

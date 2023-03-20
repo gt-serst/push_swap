@@ -1,5 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_operations_add.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/20 17:28:07 by gt-serst          #+#    #+#             */
+/*   Updated: 2023/03/20 18:23:42 by gt-serst         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
-    
+
 void	ra(t_data **stack_a)
 {
 	move_to_end(stack_a);
@@ -14,8 +26,9 @@ void	rb(t_data **stack_b)
 
 void	rr(t_data **stack_a, t_data **stack_b)
 {
-	ra(stack_a);
-	rb(stack_b);
+	move_to_end(stack_a);
+	move_to_end(stack_b);
+	ft_putstr_fd("rr\n", 1);
 }
 
 void	rra(t_data **stack_a)
