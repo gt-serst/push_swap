@@ -6,13 +6,27 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 17:29:10 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/20 18:24:09 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:12:32 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_data	**ft_sort_2(t_data **stack_a)
+static void	ft_move_front_stack(t_data **stack, t_data *elem)
+{
+	if (ft_get_spot(stack, elem) <= 3)
+	{
+		while (ft_get_spot(stack, elem) != 0)
+			ra(stack);
+	}
+	else
+	{
+		while (ft_get_spot(stack, elem) != 0)
+			rra(stack);
+	}
+}
+
+void	ft_sort_2(t_data **stack_a)
 {
 	int	top;
 	int	bottom;
@@ -21,10 +35,9 @@ t_data	**ft_sort_2(t_data **stack_a)
 	bottom = (*stack_a)->next->data;
 	if (top > bottom)
 		sa(stack_a);
-	return (stack_a);
 }
 
-t_data	**ft_sort_3(t_data **stack_a)
+void	ft_sort_3(t_data **stack_a)
 {
 	int	top;
 	int	middle;
@@ -49,10 +62,9 @@ t_data	**ft_sort_3(t_data **stack_a)
 		sa(stack_a);
 		ra(stack_a);
 	}
-	return (stack_a);
 }
 
-t_data	**ft_sort_4(t_data **stack_a, t_data **stack_b)
+void	ft_sort_4(t_data **stack_a, t_data **stack_b)
 {
 	t_data	*head;
 	t_data	*elem_min;
@@ -61,21 +73,20 @@ t_data	**ft_sort_4(t_data **stack_a, t_data **stack_b)
 	elem_min = NULL;
 	while (head)
 	{
-		if (head->index == 0)
+		if (head->index == 1)
 		{
 			elem_min = head;
 			break ;
 		}
 		head = head->next;
 	}
-	stack_a = ft_simple_swap_to_front(stack_a, elem_min);
+	ft_move_front_stack(stack_a, elem_min);
 	pb(stack_a, stack_b);
 	ft_sort_3(stack_a);
 	pa(stack_b, stack_a);
-	return (stack_a);
 }
 
-t_data	**ft_sort_5(t_data **stack_a, t_data **stack_b)
+void	ft_sort_5(t_data **stack_a, t_data **stack_b)
 {
 	t_data	*head;
 	t_data	*elem_max;
@@ -86,19 +97,18 @@ t_data	**ft_sort_5(t_data **stack_a, t_data **stack_b)
 	elem_min = NULL;
 	while (head)
 	{
-		if (head->index == ft_stack_size(stack_a))
+		if (head->index == 5)
 			elem_max = head;
-		if (head->index == 0)
+		if (head->index == 1)
 			elem_min = head;
 		head = head->next;
 	}
-	stack_a = ft_simple_swap_to_front(stack_a, elem_max);
+	ft_move_front_stack(stack_a, elem_max);
 	pb(stack_a, stack_b);
-	stack_a = ft_simple_swap_to_front(stack_a, elem_min);
+	ft_move_front_stack(stack_a, elem_min);
 	pb(stack_a, stack_b);
 	ft_sort_3(stack_a);
 	pa(stack_b, stack_a);
 	pa(stack_b, stack_a);
 	ra(stack_a);
-	return (stack_a);
 }

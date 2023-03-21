@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_100.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:35:13 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/10 23:43:11 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:11:58 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
+
+static void	ft_move_front_stack(t_data **stack, t_data *elem)
+{
+	if (ft_get_spot(stack, elem) <= (ft_stack_size(stack) / 2))
+	{
+		while (ft_get_spot(stack, elem) != 0)
+			rb(stack);
+	}
+	else
+	{
+		while (ft_get_spot(stack, elem) != 0)
+			rrb(stack);
+	}
+}
 
 void	ft_get_final_stack(t_data **stack_a, t_data **stack_b)
 {
@@ -29,7 +43,7 @@ void	ft_get_final_stack(t_data **stack_a, t_data **stack_b)
 		{
 			if (temp->index == (stack_size - count))
 			{
-				ft_swap_to_front_b(stack_b, temp);
+				ft_move_front_stack(stack_b, temp);
 				pa(stack_b, stack_a);
 				break ;
 			}
@@ -38,4 +52,39 @@ void	ft_get_final_stack(t_data **stack_a, t_data **stack_b)
 		count++;
 		head = *stack_b;
 	}
+}
+
+int	ft_get_chunk(t_data *elem, int right_chunk)
+{
+	int	chunk;
+
+	if (elem->index % right_chunk == 0)
+		chunk = (elem->index / right_chunk);
+	else
+		chunk = ((elem->index) / right_chunk) + 1;
+	return (chunk);
+}
+
+void	ft_sort_100(t_data **stack_a, t_data **stack_b, int right_chunk)
+{
+	t_data	*head;
+	t_data	*tail;
+	int		chunk;
+	int		chunk_max;
+
+	chunk = 1;
+	chunk_max = (ft_stack_size(stack_a) / right_chunk) + 1;
+	while (*stack_a && chunk <= chunk_max)
+	{
+		head = *stack_a;
+		tail = ft_ndlast(*stack_a);
+		while (head->next != NULL && ft_get_chunk(head, right_chunk) != chunk)
+			head = head->next;
+		while (tail->prev != NULL && ft_get_chunk(tail, right_chunk) != chunk)
+			tail = tail->prev;
+		ft_dispatch_chunk(stack_a, stack_b, head, tail);
+		if (ft_stack_size(stack_b) % right_chunk == 0)
+			chunk++;
+	}
+	ft_get_final_stack(stack_a, stack_b);
 }

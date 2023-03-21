@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:48:11 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/20 19:24:57 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:51:28 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int	main(int ac, char **av)
 		system("leaks push_swap");
 		return (0);
 	}
-	stack_a = ft_sorting(stack_a, stack_b);
+	ft_sorting(stack_a, stack_b);
 	return (0);
 }

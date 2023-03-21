@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 12:01:00 by gt-serst          #+#    #+#              #
-#    Updated: 2023/03/10 19:33:43 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/03/21 15:41:15 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,11 @@ SRCS				= main.c \
 					  ft_operations_utils.c \
 					  ft_operations_add.c \
 					  ft_sorting.c \
-					  ft_sorting_utils.c \
 					  ft_simple_sorting.c \
-					  ft_simple_sorting_utils.c \
-					  ft_sort_100.c
+					  ft_sort_100.c \
+					  ft_sort_100_utils.c \
+					  ft_sort_stack.c \
+					  ft_sort_stack_utils.c
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 

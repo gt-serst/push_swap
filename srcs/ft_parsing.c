@@ -6,15 +6,15 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:54:54 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/20 18:19:21 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/21 15:19:25 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_data	**ft_create_struct(t_data **stack, char **args)
+t_data	**ft_create_list(t_data **stack, char **args)
 {
-	int	index;
+	int		index;
 	t_data	*new_node;
 
 	if (!args)
@@ -53,7 +53,7 @@ t_data	**ft_get_args(t_data **stack_a, int ac, char **av)
 			i++;
 		}
 	}
-	stack_a = ft_create_struct(stack_a, args);
+	stack_a = ft_create_list(stack_a, args);
 	ft_free_malloc(args);
 	return (stack_a);
 }

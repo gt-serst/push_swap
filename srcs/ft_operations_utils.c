@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:18:45 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/20 19:29:31 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:56:28 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,13 @@ void	swap(t_data **stack)
 	t_data	*right;
 
 	if (!(*stack))
-			return ;
+		return ;
 	left = (*stack);
 	right = (*stack)->next;
 	left->prev = right;
 	left->next = right->next;
-	right->next->prev = left;
+	if (ft_stack_size(stack) > 2)
+		right->next->prev = left;
 	right->next = left;
 	right->prev = NULL;
 	(*stack) = right;
@@ -45,7 +46,7 @@ void	push(t_data **stack_src, t_data **stack_dst)
 		(*stack_src)->prev = NULL;
 }
 
-void	move_to_end (t_data **stack)
+void	move_to_end(t_data **stack)
 {
 	t_data	*head;
 	t_data	*tail;

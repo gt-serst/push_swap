@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_av.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:08:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/27 16:57:40 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/21 17:19:44 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,9 @@ int	ft_check_digit(int ac, char **av)
 	while (av[i])
 	{
 		j = 0;
-		if (av[i][j] == '-')
+		if (av[i][j] == '-' && !ft_isdigit(av[i][j + 1]))
+			return (0);
+		else
 			j++;
 		while (av[i][j])
 		{
