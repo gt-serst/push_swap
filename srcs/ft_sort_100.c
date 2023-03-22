@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:35:13 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/21 16:11:58 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:57:49 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	ft_sort_100(t_data **stack_a, t_data **stack_b, int right_chunk)
 	{
 		head = *stack_a;
 		tail = ft_ndlast(*stack_a);
-		while (head->next != NULL && ft_get_chunk(head, right_chunk) != chunk)
+		while (head->next && ft_get_chunk(head, right_chunk) != chunk)
 			head = head->next;
-		while (tail->prev != NULL && ft_get_chunk(tail, right_chunk) != chunk)
+		while (tail->prev && ft_get_chunk(tail, right_chunk) != chunk)
 			tail = tail->prev;
 		ft_dispatch_chunk(stack_a, stack_b, head, tail);
 		if (ft_stack_size(stack_b) % right_chunk == 0)

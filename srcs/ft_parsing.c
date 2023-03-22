@@ -6,54 +6,51 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:54:54 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/21 15:19:25 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:54:44 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_data	**ft_create_list(t_data **stack, char **args)
+int	ft_create_list(t_data **stack, int ac, char **av)
 {
-	int		index;
+	int		i;
 	t_data	*new_node;
 
-	if (!args)
-		return (0);
-	index = 0;
-	while (args && args[index])
+	if (ac == 2)
+		i = 0;
+	else
+		i = 1;
+	while (av && av[i])
 	{
-		new_node = ft_ndnew(ft_atoi(args[index]), index);
+		new_node = ft_ndnew(ft_atoi(av[i]));
 		if (!new_node)
 			return (0);
 		ft_ndadd_back(stack, new_node);
-		index++;
+		i++;
 	}
-	return (stack);
+	return (1);
 }
 
-t_data	**ft_get_args(t_data **stack_a, int ac, char **av)
+int	ft_get_av(t_data **stack_a, int ac, char **av)
 {
-	int		i;
 	char	**args;
 
-	if (!av)
-		return (0);
 	if (ac == 2)
-		args = ft_split(av[1], ' ');
-	else
 	{
-		args = malloc(sizeof(char *) * (ac));
-		if (!args)
-			return (0);
-		args[ac - 1] = 0;
-		i = 0;
-		while (av[i + 1])
+		args = ft_split(av[1], ' ');
+		if (*args && ft_create_list(stack_a, ac, args))
 		{
-			args[i] = ft_strdup(av[i + 1]);
-			i++;
+			ft_free_malloc(args);
+			return (1);
 		}
 	}
-	stack_a = ft_create_list(stack_a, args);
-	ft_free_malloc(args);
-	return (stack_a);
+	else
+	{
+		if (ft_create_list(stack_a, ac, av))
+			return (1);
+	}
+	if (ac == 2)
+		ft_free_malloc(args);
+	return (0);
 }

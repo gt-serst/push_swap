@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:08:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/21 17:19:44 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:36:58 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	ft_check_digit(int ac, char **av)
 		j = 0;
 		if (av[i][j] == '-' && !ft_isdigit(av[i][j + 1]))
 			return (0);
-		else
+		else if (av[i][j] == '-' && ft_isdigit(av[i][j + 1]))
 			j++;
 		while (av[i][j])
 		{
@@ -94,27 +94,30 @@ int	ft_check_digit(int ac, char **av)
 	return (1);
 }
 
-int	ft_check_av(int ac, char **av)
+void	ft_check_av(int ac, char **av)
 {
 	char	**args;
 
-	if (ac < 2)
-		return (0);
 	if (ac == 2)
 	{
 		args = ft_split(av[1], ' ');
+		if (!*args)
+		{
+			ft_free_malloc(args);
+			return ;
+		}
 		if (!ft_check_digit(ac, args) || !ft_check_intoverflow(ac, args)
 			|| !ft_check_double(ac, args))
 		{
 			ft_free_malloc(args);
-			return (0);
+			ft_error("Error\n");
 		}
+		ft_free_malloc(args);
 	}
 	else
 	{
 		if (!ft_check_digit(ac, av) || !ft_check_intoverflow(ac, av)
 			|| !ft_check_double(ac, av))
-			return (0);
+			ft_error("Error\n");
 	}
-	return (1);
 }

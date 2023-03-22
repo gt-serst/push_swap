@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:24:42 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/21 17:12:13 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:11:00 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	ft_get_spot(t_data **stack, t_data *elem)
 
 	spot = 0;
 	head = *stack;
-	while (head->next != NULL)
+	while (head->next)
 	{
 		if (head->index == elem->index)
 			break ;
@@ -69,6 +69,8 @@ int	ft_get_spot(t_data **stack, t_data *elem)
 
 void	ft_sorting(t_data **stack_a, t_data **stack_b)
 {
+	if (!stack_a)
+		return ;
 	ft_put_index(stack_a);
 	if (ft_stack_size(stack_a) == 2)
 		ft_sort_2(stack_a);

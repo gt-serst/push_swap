@@ -6,20 +6,30 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:48:11 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/21 16:51:28 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:55:24 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_print_list(t_data *head)
+int	ft_is_sorted(t_data **stack)
 {
-	while (head)
+	t_data	*head;
+
+	head = *stack;
+	while (head->next)
 	{
-		printf("%d  ", head->data);
+		if (head->data > head->next->data)
+			return (0);
 		head = head->next;
 	}
-	printf("\n");
+	return (1);
+}
+
+void	ft_error(char *s)
+{
+	ft_putstr_fd(s, 2);
+	exit (EXIT_FAILURE);
 }
 
 int	main(int ac, char **av)
@@ -29,24 +39,21 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (-1);
-	if (!ft_check_av(ac, av))
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (0);
-	}
+	ft_check_av(ac, av);
 	stack_a = malloc(sizeof(t_data *));
 	stack_b = malloc(sizeof(t_data *));
-	if (!stack_a || !stack_b)
-		return (0);
+	if (!stack_a && !stack_b)
+		return (-1);
 	*stack_a = NULL;
 	*stack_b = NULL;
-	stack_a = ft_get_args(stack_a, ac, av);
-	if (!stack_a)
+	if (!ft_get_av(stack_a, ac, av) || ft_is_sorted(stack_a))
 	{
-		ft_ndclear(stack_a);
-		system("leaks push_swap");
-		return (0);
+		ft_ndsclear(stack_a);
+		ft_ndsclear(stack_b);
+		return (-1);
 	}
 	ft_sorting(stack_a, stack_b);
+	ft_ndsclear(stack_a);
+	ft_ndsclear(stack_b);
 	return (0);
 }

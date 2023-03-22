@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:18:45 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/21 16:56:28 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/22 20:08:23 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	swap(t_data **stack)
 	t_data	*left;
 	t_data	*right;
 
-	if (!(*stack))
-		return ;
 	left = (*stack);
 	right = (*stack)->next;
 	left->prev = right;
@@ -34,8 +32,6 @@ void	push(t_data **stack_src, t_data **stack_dst)
 {
 	t_data	*temp;
 
-	if (!(*stack_src))
-		return ;
 	temp = (*stack_src)->next;
 	(*stack_src)->next = (*stack_dst);
 	if (*stack_dst != NULL)
@@ -51,11 +47,9 @@ void	move_to_end(t_data **stack)
 	t_data	*head;
 	t_data	*tail;
 
-	if (!(*stack))
-		return ;
 	head = *stack;
 	tail = *stack;
-	while (tail->next != NULL)
+	while (tail->next)
 		tail = tail->next;
 	*stack = head->next;
 	(*stack)->prev = NULL;
@@ -69,10 +63,8 @@ void	move_to_front(t_data **stack)
 	t_data	*before_tail;
 	t_data	*tail;
 
-	if (!(*stack))
-		return ;
 	tail = *stack;
-	while (tail->next != NULL)
+	while (tail->next)
 	{
 		before_tail = tail;
 		tail = tail->next;
@@ -86,6 +78,8 @@ void	move_to_front(t_data **stack)
 
 void	rrr(t_data **stack_a, t_data **stack_b)
 {
+	if (ft_stack_size(stack_a) < 2 || ft_stack_size(stack_b) < 2)
+		return ;
 	rra(stack_a);
 	rrb(stack_b);
 }

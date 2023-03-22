@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:39:41 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/21 16:20:57 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:57:33 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_put_at_right_place(t_data **stack_b, t_data *hold)
 void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 {
 	ft_move_front_stack(stack_a, hold);
-	if (*stack_b == NULL)
+	if (!*stack_b)
 	{
 		pb(stack_a, stack_b);
 		return ;

@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:45:51 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/21 16:22:46 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:55:37 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ typedef struct s_data
 	struct s_data	*prev;
 }				t_data;
 
-int			ft_check_av(int ac, char **av);
+void		ft_check_av(int ac, char **av);
 int			ft_check_digit(int ac, char **av);
 int			ft_check_intoverflow(int ac, char **av);
 int			ft_check_double(int ac, char **av);
 long long	ft_atol(const char *str);
 void		ft_free_malloc(char	**tab);
-t_data		**ft_get_args(t_data **stack_a, int ac, char **av);
-t_data		**ft_create_list(t_data **stack_a, char **args);
-t_data		*ft_ndnew(int data, int index);
+void		ft_error(char *s);
+int			ft_get_av(t_data **stack_a, int ac, char **av);
+int			ft_create_list(t_data **stack_a, int ac, char **av);
+t_data		*ft_ndnew(int data);
 void		ft_ndadd_back(t_data **stack_a, t_data *elem);
 t_data		*ft_ndlast(t_data *head);
-void		ft_ndclear(t_data **stack);
+void		ft_ndsclear(t_data **stack);
 void		sa(t_data **stack_a);
 void		sb(t_data **stack_b);
 void		ss(t_data **stack_a, t_data **stack_b);
@@ -54,6 +55,7 @@ void		swap(t_data **stack);
 void		push(t_data **stack_src, t_data **stack_dst);
 void		move_to_end(t_data **stack);
 void		move_to_front(t_data **stack);
+int			ft_is_sorted(t_data **stack);
 void		ft_sorting(t_data **stack_a, t_data **stack_b);
 void		ft_put_index(t_data **stack);
 int			ft_stack_size(t_data **stack);
@@ -81,7 +83,5 @@ void		ft_adjust_stack(t_data **stack, t_data *hold, int pos);
 void		ft_adjust_stackmax(t_data **stack, int pos);
 void		ft_adjust_stackmin(t_data **stack, int pos);
 void		ft_get_final_stack(t_data **stack_a, t_data **stack_b);
-
-void		ft_print_list(t_data *head);
 
 #endif

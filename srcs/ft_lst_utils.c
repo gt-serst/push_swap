@@ -6,13 +6,13 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:18:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/20 19:29:57 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/22 19:55:40 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_data	*ft_ndnew(int data, int index)
+t_data	*ft_ndnew(int data)
 {
 	t_data	*elem;
 
@@ -20,7 +20,6 @@ t_data	*ft_ndnew(int data, int index)
 	if (!elem)
 		return (NULL);
 	elem->data = data;
-	elem->index = index;
 	elem->next = NULL;
 	elem->prev = NULL;
 	return (elem);
@@ -51,7 +50,7 @@ void	ft_ndadd_back(t_data **stack, t_data *elem)
 		*stack = elem;
 }
 
-void	ft_ndclear(t_data **stack)
+void	ft_ndsclear(t_data **stack)
 {
 	t_data	*head;
 	t_data	*temp;
@@ -59,11 +58,12 @@ void	ft_ndclear(t_data **stack)
 	if (!stack)
 		return ;
 	head = *stack;
-	while (head != NULL)
+	while (head)
 	{
 		temp = head;
 		head = head->next;
 		free(temp);
 	}
+	free(stack);
 	*stack = NULL;
 }
