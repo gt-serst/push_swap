@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:24:42 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 16:10:47 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:57:30 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,13 @@ int	ft_get_spot(t_data **stack, t_data *elem)
 	return (spot);
 }
 
-void	ft_move_front_stack(t_data **stack, t_data *elem, char c)
+void	ft_move_front_stack(t_data **stack, t_data *elem, int idx)
 {
 	if (ft_get_spot(stack, elem) <= (ft_stack_size(stack) / 2))
 	{
 		while (ft_get_spot(stack, elem) != 0)
 		{
-			if (c == 'A')
+			if (idx == 1)
 				ra(stack);
 			else
 				rb(stack);
@@ -83,7 +83,7 @@ void	ft_move_front_stack(t_data **stack, t_data *elem, char c)
 	{
 		while (ft_get_spot(stack, elem) != 0)
 		{
-			if (c == 'A')
+			if (idx == 1)
 				rra(stack);
 			else
 				rrb(stack);

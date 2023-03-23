@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 01:17:10 by geraudtsers       #+#    #+#             */
-/*   Updated: 2023/03/23 15:30:41 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:57:55 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	ft_sort_4(t_data **stack_a, t_data **stack_b)
 			min = head;
 		head = head->next;
 	}
-	ft_move_front_stack(stack_a, min, 'A');
+	ft_move_front_stack(stack_a, min, 1);
 	pb(stack_a, stack_b);
 	ft_sort_3(stack_a);
 	pa(stack_b, stack_a);
@@ -82,7 +82,7 @@ void	ft_sort_5(t_data **stack_a, t_data **stack_b)
 			max = head;
 		head = head->next;
 	}
-	ft_move_front_stack(stack_a, max, 'A');
+	ft_move_front_stack(stack_a, max, 1);
 	pb(stack_a, stack_b);
 	ft_sort_4(stack_a, stack_b);
 	pa(stack_b, stack_a);

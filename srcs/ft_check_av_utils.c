@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_av_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 15:11:24 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/02/27 16:07:51 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:55:04 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/push_swap.h"
 
 long long	ft_atol(const char *str)
 {

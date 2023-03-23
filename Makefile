@@ -6,11 +6,11 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 12:01:00 by gt-serst          #+#    #+#              #
-#    Updated: 2023/03/23 16:37:33 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/03/23 17:28:11 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME				= push_swa
+NAME				= push_swap
 
 CC					= gcc
 
@@ -45,7 +45,7 @@ LIBFT				= $(LIBFT_PATH)/libft.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-					${CC} -g -fsanitize=address -o ${NAME} ${OBJS} ${LIBFT}
+					${CC} -o ${NAME} ${OBJS} ${LIBFT}
 
 $(LIBFT):
 					make -C $(LIBFT_PATH) all

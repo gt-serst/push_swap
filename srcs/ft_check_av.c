@@ -6,23 +6,23 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:08:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 16:46:06 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:48:35 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_free_malloc(char **tab)
+void	ft_free_malloc(char **str)
 {
 	int	k;
 
 	k = 0;
-	while (tab && tab[k])
+	while (str && str[k])
 	{
-		free(tab[k]);
+		free(str[k]);
 		k++;
 	}
-	free(tab);
+	free(str);
 }
 
 int	ft_check_double(int ac, char **av)
@@ -34,7 +34,7 @@ int	ft_check_double(int ac, char **av)
 		i = 0;
 	else
 		i = 1;
-	while (av[i])
+	while (av && av[i])
 	{
 		j = i + 1;
 		while (av[j])
@@ -57,7 +57,7 @@ int	ft_check_intoverflow(int ac, char **av)
 		i = 0;
 	else
 		i = 1;
-	while (av[i])
+	while (av && av[i])
 	{
 		current_digit = ft_atol(av[i]);
 		if (current_digit > INT_MAX || current_digit < INT_MIN)
@@ -76,7 +76,7 @@ int	ft_check_digit(int ac, char **av)
 		i = 0;
 	else
 		i = 1;
-	while (av[i])
+	while (av && av[i])
 	{
 		j = 0;
 		if (av[i][j] == '-' && !ft_isdigit(av[i][j + 1]))
@@ -112,7 +112,6 @@ void	ft_check_av(int ac, char **av)
 			ft_free_malloc(args);
 			ft_error("Error\n");
 		}
-		ft_free_malloc(args);
 	}
 	else
 	{
@@ -120,4 +119,6 @@ void	ft_check_av(int ac, char **av)
 			|| !ft_check_double(ac, av))
 			ft_error("Error\n");
 	}
+	if (ac == 2)
+		ft_free_malloc(args);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_100_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:39:41 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 01:11:27 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/03/23 16:58:03 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_put_at_right_place(t_data **stack_b, t_data *hold)
 
 void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 {
-	ft_move_front_stack(stack_a, hold, 'A');
+	ft_move_front_stack(stack_a, hold, 1);
 	if (!*stack_b)
 	{
 		pb(stack_a, stack_b);

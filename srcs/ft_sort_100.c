@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_100.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:35:13 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 01:11:59 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/03/23 16:58:08 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_get_final_stack(t_data **stack_a, t_data **stack_b)
 		{
 			if (temp->index == (stack_size - count))
 			{
-				ft_move_front_stack(stack_b, temp, 'B');
+				ft_move_front_stack(stack_b, temp, 2);
 				pa(stack_b, stack_a);
 				break ;
 			}

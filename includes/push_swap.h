@@ -6,14 +6,13 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:45:51 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 16:22:02 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 17:48:53 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
@@ -32,7 +31,7 @@ int			ft_check_digit(int ac, char **av);
 int			ft_check_intoverflow(int ac, char **av);
 int			ft_check_double(int ac, char **av);
 long long	ft_atol(const char *str);
-void		ft_free_malloc(char	**tab);
+void		ft_free_malloc(char	**str);
 void		ft_error(char *s);
 int			ft_get_av(t_data **stack_a, int ac, char **av);
 int			ft_create_list(t_data **stack_a, int ac, char **av);
@@ -66,7 +65,7 @@ void		ft_sort_5(t_data **stack_a, t_data **stack_b);
 void		ft_sort_100(t_data **stack_a, t_data **stack_b, int right_chunk);
 int			ft_get_spot(t_data **stack, t_data *elem);
 int			ft_get_chunk(t_data *elem, int right_chunk);
-void		ft_move_front_stack(t_data **stack, t_data *elem, char c);
+void		ft_move_front_stack(t_data **stack, t_data *elem, int idx);
 void		ft_dispatch_chunk(t_data **stack_a, t_data **stack_b,
 				t_data *head, t_data *tail);
 int			ft_get_moves_to_top(int spot, int stack_size);
