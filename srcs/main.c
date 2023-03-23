@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:48:11 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/22 19:55:24 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:48:56 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ int	main(int ac, char **av)
 	t_data	**stack_b;
 
 	if (ac < 2)
-		return (-1);
+		return (1);
 	ft_check_av(ac, av);
 	stack_a = malloc(sizeof(t_data *));
 	stack_b = malloc(sizeof(t_data *));
 	if (!stack_a && !stack_b)
-		return (-1);
+		return (1);
 	*stack_a = NULL;
 	*stack_b = NULL;
-	if (!ft_get_av(stack_a, ac, av) || ft_is_sorted(stack_a))
+	if (!ft_get_av(stack_a, ac, av))
 	{
 		ft_ndsclear(stack_a);
 		ft_ndsclear(stack_b);
-		return (-1);
+		return (1);
 	}
 	ft_sorting(stack_a, stack_b);
 	ft_ndsclear(stack_a);

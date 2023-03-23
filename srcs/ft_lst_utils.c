@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:18:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/22 19:55:40 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 16:38:01 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,4 @@ void	ft_ndsclear(t_data **stack)
 		free(temp);
 	}
 	free(stack);
-	*stack = NULL;
 }

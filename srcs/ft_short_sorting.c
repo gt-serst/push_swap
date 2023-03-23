@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_short_sorting.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
+/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 01:17:10 by geraudtsers       #+#    #+#             */
-/*   Updated: 2023/03/23 01:17:20 by geraudtsers      ###   ########.fr       */
+/*   Updated: 2023/03/23 15:30:41 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

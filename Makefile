@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+         #
+#    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 12:01:00 by gt-serst          #+#    #+#              #
-#    Updated: 2023/03/23 01:17:31 by geraudtsers      ###   ########.fr        #
+#    Updated: 2023/03/23 16:37:33 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME				= push_swap
+NAME				= push_swa
 
 CC					= gcc
 
@@ -31,7 +31,7 @@ SRCS				= main.c \
 					  ft_sort_100.c \
 					  ft_sort_100_utils.c \
 					  ft_sort_stack.c \
-					  ft_sort_stack_utils.c
+					  ft_sort_stack_utils.c \
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 
@@ -40,12 +40,12 @@ LIBFT_PATH			= ./libft
 LIBFT				= $(LIBFT_PATH)/libft.a
 
 .c.o:
-					$(CC) $(CFLAGS) -c -I./includes $< -o $(<:.c=.o)
+					$(CC) $(CFLAGS) -c -I ./includes $< -o $(<:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-					${CC} -o ${NAME} ${OBJS} ${LIBFT}
+					${CC} -g -fsanitize=address -o ${NAME} ${OBJS} ${LIBFT}
 
 $(LIBFT):
 					make -C $(LIBFT_PATH) all
