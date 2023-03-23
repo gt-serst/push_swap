@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sorting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:24:42 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/22 20:11:00 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 01:26:02 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,32 @@ int	ft_get_spot(t_data **stack, t_data *elem)
 	return (spot);
 }
 
+void	ft_move_front_stack(t_data **stack, t_data *elem, char c)
+{
+	if (ft_get_spot(stack, elem) <= (ft_stack_size(stack) / 2))
+	{
+		while (ft_get_spot(stack, elem) != 0)
+		{
+			if (c == 'A')
+				ra(stack);
+			else
+				rb(stack);
+		}
+	}
+	else
+	{
+		while (ft_get_spot(stack, elem) != 0)
+		{
+			if (c == 'A')
+				rra(stack);
+			else
+				rrb(stack);
+		}
+	}
+}
+
 void	ft_sorting(t_data **stack_a, t_data **stack_b)
 {
-	if (!stack_a)
-		return ;
 	ft_put_index(stack_a);
 	if (ft_stack_size(stack_a) == 2)
 		ft_sort_2(stack_a);

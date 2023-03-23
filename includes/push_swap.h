@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 11:45:51 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/22 19:55:37 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 01:15:05 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void		ft_sort_5(t_data **stack_a, t_data **stack_b);
 void		ft_sort_100(t_data **stack_a, t_data **stack_b, int right_chunk);
 int			ft_get_spot(t_data **stack, t_data *elem);
 int			ft_get_chunk(t_data *elem, int right_chunk);
+void		ft_move_front_stack(t_data **stack, t_data *elem, char c);
 void		ft_dispatch_chunk(t_data **stack_a, t_data **stack_b,
 				t_data *head, t_data *tail);
 int			ft_get_moves_to_top(int spot, int stack_size);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
+#    By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 12:01:00 by gt-serst          #+#    #+#              #
-#    Updated: 2023/03/22 19:15:27 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/03/23 01:17:31 by geraudtsers      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS				= main.c \
 					  ft_operations_utils.c \
 					  ft_operations_add.c \
 					  ft_sorting.c \
-					  ft_simple_sorting.c \
+					  ft_short_sorting.c \
 					  ft_sort_100.c \
 					  ft_sort_100_utils.c \
 					  ft_sort_stack.c \

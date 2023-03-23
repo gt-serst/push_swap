@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_100.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:35:13 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/22 19:57:49 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 01:11:59 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static void	ft_move_front_stack(t_data **stack, t_data *elem)
-{
-	if (ft_get_spot(stack, elem) <= (ft_stack_size(stack) / 2))
-	{
-		while (ft_get_spot(stack, elem) != 0)
-			rb(stack);
-	}
-	else
-	{
-		while (ft_get_spot(stack, elem) != 0)
-			rrb(stack);
-	}
-}
 
 void	ft_get_final_stack(t_data **stack_a, t_data **stack_b)
 {
@@ -43,7 +29,7 @@ void	ft_get_final_stack(t_data **stack_a, t_data **stack_b)
 		{
 			if (temp->index == (stack_size - count))
 			{
-				ft_move_front_stack(stack_b, temp);
+				ft_move_front_stack(stack_b, temp, 'B');
 				pa(stack_b, stack_a);
 				break ;
 			}

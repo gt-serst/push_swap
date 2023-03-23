@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_100_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
+/*   By: geraudtserstevens <geraudtserstevens@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 15:39:41 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/22 19:57:33 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 01:11:27 by geraudtsers      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-static void	ft_move_front_stack(t_data **stack, t_data *elem)
-{
-	if (ft_get_spot(stack, elem) <= (ft_stack_size(stack) / 2))
-	{
-		while (ft_get_spot(stack, elem) != 0)
-			ra(stack);
-	}
-	else
-	{
-		while (ft_get_spot(stack, elem) != 0)
-			rra(stack);
-	}
-}
 
 int	ft_get_moves_to_top(int spot, int stack_size)
 {
@@ -42,9 +28,7 @@ int	ft_get_moves_to_top(int spot, int stack_size)
 void	ft_put_at_right_place(t_data **stack_b, t_data *hold)
 {
 	int		pos;
-	t_data	*head;
 
-	head = *stack_b;
 	if (ft_is_max(stack_b, hold))
 	{
 		pos = ft_get_max_pos(stack_b, hold);
@@ -61,7 +45,7 @@ void	ft_put_at_right_place(t_data **stack_b, t_data *hold)
 
 void	ft_move_to_otherstack(t_data **stack_a, t_data **stack_b, t_data *hold)
 {
-	ft_move_front_stack(stack_a, hold);
+	ft_move_front_stack(stack_a, hold, 'A');
 	if (!*stack_b)
 	{
 		pb(stack_a, stack_b);
