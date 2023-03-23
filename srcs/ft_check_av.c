@@ -6,7 +6,7 @@
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:08:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 17:48:35 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/03/23 18:59:06 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	ft_check_av(int ac, char **av)
 		if (!*args)
 		{
 			ft_free_malloc(args);
-			return ;
+			ft_error("Error\n");
 		}
 		if (!ft_check_digit(ac, args) || !ft_check_intoverflow(ac, args)
 			|| !ft_check_double(ac, args))
