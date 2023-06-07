@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_short_sorting.c                                 :+:      :+:    :+:   */
+/*   short_sorting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 01:17:10 by geraudtsers       #+#    #+#             */
-/*   Updated: 2023/03/23 16:57:55 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 10:52:12 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_sort_2(t_data **stack_a)
+void	sort_2(t_data **stack_a)
 {
 	int	top;
 	int	bottom;
@@ -23,7 +23,7 @@ void	ft_sort_2(t_data **stack_a)
 		sa(stack_a);
 }
 
-void	ft_sort_3(t_data **stack_a)
+void	sort_3(t_data **stack_a)
 {
 	int	top;
 	int	middle;
@@ -50,7 +50,7 @@ void	ft_sort_3(t_data **stack_a)
 		ra(stack_a);
 }
 
-void	ft_sort_4(t_data **stack_a, t_data **stack_b)
+void	sort_4(t_data **stack_a, t_data **stack_b)
 {
 	t_data	*head;
 	t_data	*min;
@@ -63,13 +63,13 @@ void	ft_sort_4(t_data **stack_a, t_data **stack_b)
 			min = head;
 		head = head->next;
 	}
-	ft_move_front_stack(stack_a, min, 1);
+	move_front_stack(stack_a, min, 1);
 	pb(stack_a, stack_b);
-	ft_sort_3(stack_a);
+	sort_3(stack_a);
 	pa(stack_b, stack_a);
 }
 
-void	ft_sort_5(t_data **stack_a, t_data **stack_b)
+void	sort_5(t_data **stack_a, t_data **stack_b)
 {
 	t_data	*head;
 	t_data	*max;
@@ -82,9 +82,9 @@ void	ft_sort_5(t_data **stack_a, t_data **stack_b)
 			max = head;
 		head = head->next;
 	}
-	ft_move_front_stack(stack_a, max, 1);
+	move_front_stack(stack_a, max, 1);
 	pb(stack_a, stack_b);
-	ft_sort_4(stack_a, stack_b);
+	sort_4(stack_a, stack_b);
 	pa(stack_b, stack_a);
 	ra(stack_a);
 }

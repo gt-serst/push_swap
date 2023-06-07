@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_operations_utils.c                              :+:      :+:    :+:   */
+/*   operations_utils2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:18:45 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 15:37:30 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 10:52:00 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	swap(t_data **stack)
 	right = (*stack)->next;
 	left->prev = right;
 	left->next = right->next;
-	if (ft_stack_size(stack) > 2)
+	if (get_stack_size(stack) > 2)
 		right->next->prev = left;
 	right->next = left;
 	right->prev = NULL;
@@ -78,7 +78,7 @@ void	move_to_front(t_data **stack)
 
 void	rrr(t_data **stack_a, t_data **stack_b)
 {
-	if (ft_stack_size(stack_a) < 2 || ft_stack_size(stack_b) < 2)
+	if (get_stack_size(stack_a) < 2 || get_stack_size(stack_b) < 2)
 		return ;
 	rra(stack_a);
 	rrb(stack_b);

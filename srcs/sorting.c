@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sorting.c                                       :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 19:24:42 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 16:57:30 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 10:52:33 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_put_index(t_data **stack)
+void	put_index(t_data **stack)
 {
 	int		pos;
 	t_data	*head;
@@ -34,7 +34,7 @@ void	ft_put_index(t_data **stack)
 	}
 }
 
-int	ft_stack_size(t_data **stack)
+int	get_stack_size(t_data **stack)
 {
 	int		stack_size;
 	t_data	*head;
@@ -50,7 +50,7 @@ int	ft_stack_size(t_data **stack)
 	return (stack_size);
 }
 
-int	ft_get_spot(t_data **stack, t_data *elem)
+int	get_spot(t_data **stack, t_data *elem)
 {
 	int		spot;
 	t_data	*head;
@@ -67,11 +67,11 @@ int	ft_get_spot(t_data **stack, t_data *elem)
 	return (spot);
 }
 
-void	ft_move_front_stack(t_data **stack, t_data *elem, int idx)
+void	move_front_stack(t_data **stack, t_data *elem, int idx)
 {
-	if (ft_get_spot(stack, elem) <= (ft_stack_size(stack) / 2))
+	if (get_spot(stack, elem) <= (get_stack_size(stack) / 2))
 	{
-		while (ft_get_spot(stack, elem) != 0)
+		while (get_spot(stack, elem) != 0)
 		{
 			if (idx == 1)
 				ra(stack);
@@ -81,7 +81,7 @@ void	ft_move_front_stack(t_data **stack, t_data *elem, int idx)
 	}
 	else
 	{
-		while (ft_get_spot(stack, elem) != 0)
+		while (get_spot(stack, elem) != 0)
 		{
 			if (idx == 1)
 				rra(stack);
@@ -91,22 +91,22 @@ void	ft_move_front_stack(t_data **stack, t_data *elem, int idx)
 	}
 }
 
-void	ft_sorting(t_data **stack_a, t_data **stack_b)
+void	sorting(t_data **stack_a, t_data **stack_b)
 {
-	ft_put_index(stack_a);
-	if (!ft_is_sorted(stack_a))
+	put_index(stack_a);
+	if (!is_sorted(stack_a))
 	{
-		if (ft_stack_size(stack_a) == 2)
-			ft_sort_2(stack_a);
-		else if (ft_stack_size(stack_a) == 3)
-			ft_sort_3(stack_a);
-		else if (ft_stack_size(stack_a) == 4)
-			ft_sort_4(stack_a, stack_b);
-		else if (ft_stack_size(stack_a) == 5)
-			ft_sort_5(stack_a, stack_b);
-		else if (ft_stack_size(stack_a) > 5 && ft_stack_size(stack_a) <= 100)
-			ft_sort_100(stack_a, stack_b, 20);
+		if (get_stack_size(stack_a) == 2)
+			sort_2(stack_a);
+		else if (get_stack_size(stack_a) == 3)
+			sort_3(stack_a);
+		else if (get_stack_size(stack_a) == 4)
+			sort_4(stack_a, stack_b);
+		else if (get_stack_size(stack_a) == 5)
+			sort_5(stack_a, stack_b);
+		else if (get_stack_size(stack_a) > 5 && get_stack_size(stack_a) <= 100)
+			sort_100(stack_a, stack_b, 20);
 		else
-			ft_sort_100(stack_a, stack_b, 45);
+			sort_100(stack_a, stack_b, 45);
 	}
 }

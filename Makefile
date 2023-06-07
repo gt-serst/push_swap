@@ -6,7 +6,7 @@
 #    By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 12:01:00 by gt-serst          #+#    #+#              #
-#    Updated: 2023/04/14 17:13:35 by gt-serst         ###   ########.fr        #
+#    Updated: 2023/06/07 10:53:02 by gt-serst         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,19 +19,19 @@ CFLAGS				= -Wall -Wextra -Werror
 RM					= rm -rf
 
 SRCS				= main.c \
-					  ft_parsing.c \
-					  ft_lst_utils.c \
-					  ft_check_av.c \
-					  ft_check_av_utils.c \
-					  ft_operations.c \
-					  ft_operations_utils.c \
-					  ft_operations_add.c \
-					  ft_sorting.c \
-					  ft_short_sorting.c \
-					  ft_sort_100.c \
-					  ft_sort_100_utils.c \
-					  ft_sort_stack.c \
-					  ft_sort_stack_utils.c \
+					  parsing.c \
+					  lst_utils.c \
+					  check_av.c \
+					  check_av_utils.c \
+					  operations.c \
+					  operations_utils.c \
+					  operations_utils2.c \
+					  sorting.c \
+					  short_sorting.c \
+					  sort_100.c \
+					  sort_100_utils.c \
+					  sort_stack.c \
+					  sort_stack_utils.c \
 
 OBJS				= $(addprefix srcs/, $(SRCS:.c=.o))
 

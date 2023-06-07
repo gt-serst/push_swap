@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_av.c                                      :+:      :+:    :+:   */
+/*   check_av.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 18:08:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 18:59:06 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 10:51:49 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_free_malloc(char **str)
 	free(str);
 }
 
-int	ft_check_double(int ac, char **av)
+int	check_double(int ac, char **av)
 {
 	int	i;
 	int	j;
@@ -48,7 +48,7 @@ int	ft_check_double(int ac, char **av)
 	return (1);
 }
 
-int	ft_check_intoverflow(int ac, char **av)
+int	check_intoverflow(int ac, char **av)
 {
 	int			i;
 	long long	current_digit;
@@ -67,7 +67,7 @@ int	ft_check_intoverflow(int ac, char **av)
 	return (1);
 }
 
-int	ft_check_digit(int ac, char **av)
+int	check_digit(int ac, char **av)
 {
 	int	i;
 	int	j;
@@ -94,7 +94,7 @@ int	ft_check_digit(int ac, char **av)
 	return (1);
 }
 
-void	ft_check_av(int ac, char **av)
+void	check_av(int ac, char **av)
 {
 	char	**args;
 
@@ -106,8 +106,8 @@ void	ft_check_av(int ac, char **av)
 			ft_free_malloc(args);
 			ft_error("Error\n");
 		}
-		if (!ft_check_digit(ac, args) || !ft_check_intoverflow(ac, args)
-			|| !ft_check_double(ac, args))
+		if (!check_digit(ac, args) || !check_intoverflow(ac, args)
+			|| !check_double(ac, args))
 		{
 			ft_free_malloc(args);
 			ft_error("Error\n");
@@ -115,8 +115,8 @@ void	ft_check_av(int ac, char **av)
 	}
 	else
 	{
-		if (!ft_check_digit(ac, av) || !ft_check_intoverflow(ac, av)
-			|| !ft_check_double(ac, av))
+		if (!check_digit(ac, av) || !check_intoverflow(ac, av)
+			|| !check_double(ac, av))
 			ft_error("Error\n");
 	}
 	if (ac == 2)

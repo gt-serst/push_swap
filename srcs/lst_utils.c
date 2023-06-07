@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lst_utils.c                                     :+:      :+:    :+:   */
+/*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gt-serst <gt-serst@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:18:07 by gt-serst          #+#    #+#             */
-/*   Updated: 2023/03/23 16:38:01 by gt-serst         ###   ########.fr       */
+/*   Updated: 2023/06/07 10:51:53 by gt-serst         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_data	*ft_ndnew(int data)
+t_data	*ndnew(int data)
 {
 	t_data	*elem;
 
@@ -25,7 +25,7 @@ t_data	*ft_ndnew(int data)
 	return (elem);
 }
 
-t_data	*ft_ndlast(t_data *head)
+t_data	*ndlast(t_data *head)
 {
 	if (!head)
 		return (NULL);
@@ -34,7 +34,7 @@ t_data	*ft_ndlast(t_data *head)
 	return (head);
 }
 
-void	ft_ndadd_back(t_data **stack, t_data *elem)
+void	ndadd_back(t_data **stack, t_data *elem)
 {
 	t_data	*temp;
 
@@ -42,7 +42,7 @@ void	ft_ndadd_back(t_data **stack, t_data *elem)
 		return ;
 	if (*stack)
 	{
-		temp = ft_ndlast(*stack);
+		temp = ndlast(*stack);
 		temp->next = elem;
 		elem->prev = temp;
 	}
@@ -50,7 +50,7 @@ void	ft_ndadd_back(t_data **stack, t_data *elem)
 		*stack = elem;
 }
 
-void	ft_ndsclear(t_data **stack)
+void	ndsclear(t_data **stack)
 {
 	t_data	*head;
 	t_data	*temp;
